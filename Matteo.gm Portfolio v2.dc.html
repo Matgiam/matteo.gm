@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<style>
+  html,body{margin:0;padding:0;background:#FBF4E9}
+  ::selection{background:#D0500E;color:#FBF4E9}
+  a{color:#B3400E;text-decoration:none}
+  a:hover{color:#7E2C08}
+  input,textarea,select{width:100%;min-width:0;box-sizing:border-box;font-family:'Newsreader',serif}
+  input::placeholder,textarea::placeholder{color:#B79A79}
+  @keyframes marq{to{transform:translateX(-50%)}}
+  @media (max-width:920px){
+    [data-r~="stack"]{grid-template-columns:1fr !important}
+    [data-r~="hide"]{display:none !important}
+    [data-r~="unstick"]{position:static !important}
+    [data-r~="cell"]{grid-column:auto !important;grid-row:auto !important}
+    [data-r~="works"]{grid-template-columns:44px 1fr 64px !important}
+    [data-r~="center"]{justify-content:center !important;text-align:center !important}
+    [data-r~="gal"]{grid-auto-rows:200px !important}
+  }
+  @media (max-width:640px){
+    nav [data-nav-links] a:not([data-nav-cta]){display:none}
+    nav [data-nav-links]{gap:0 !important}
+    [data-r~="works"]{grid-template-columns:36px 1fr !important}
+    [data-r~="works"] [data-col="year"]{display:none !important}
+    [data-r~="gal"]{grid-auto-rows:170px !important}
+  }
+</style>
+</helmet>
+<div style="min-height:100vh;background:#FBF4E9;color:#2A1B10;font-family:'Newsreader',serif;font-size:18px;line-height:1.65;font-weight:400">
+
+  <!-- ══ NAV ══ -->
+  <nav style="position:sticky;top:0;z-index:50;background:rgba(251,244,233,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(58,35,16,.16)">
+    <div style="max-width:1240px;margin:0 auto;padding:12px clamp(20px,5vw,48px);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <a onClick="{{ goHome }}" style="font-family:'Instrument Serif',serif;font-size:26px;color:#2A1B10;cursor:pointer;letter-spacing:.01em">Matteo<span style="color:#D0500E">.</span>gm</a>
+      <div data-nav-links style="display:flex;gap:clamp(14px,2.4vw,28px);font-size:15.5px;letter-spacing:.02em;align-items:center;flex-wrap:wrap">
+        <a onClick="{{ goHome }}" style="cursor:pointer;color:{{ nav.home }}" style-hover="color:#D0500E">Home</a>
+        <a onClick="{{ goAbout }}" style="cursor:pointer;color:{{ nav.about }}" style-hover="color:#D0500E">About</a>
+        <a onClick="{{ goListen }}" style="cursor:pointer;color:{{ nav.listen }}" style-hover="color:#D0500E">Listen</a>
+        <a onClick="{{ goWorks }}" style="cursor:pointer;color:{{ nav.works }}" style-hover="color:#D0500E">Works</a>
+        <a onClick="{{ goConcerts }}" style="cursor:pointer;color:{{ nav.concerts }}" style-hover="color:#D0500E">Concerts</a>
+        <a onClick="{{ goGallery }}" style="cursor:pointer;color:{{ nav.gallery }}" style-hover="color:#D0500E">Gallery</a>
+        <a onClick="{{ goPress }}" style="cursor:pointer;color:{{ nav.press }}" style-hover="color:#D0500E">Press</a>
+        <a onClick="{{ goBook }}" data-nav-cta style="cursor:pointer;color:#FBF4E9;background:#D0500E;padding:8px 20px;border-radius:999px;font-size:15.5px" style-hover="background:#A63C0F">Book me</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══════════ HOME ══════════ -->
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <main data-screen-label="Home">
+    <section data-r="stack" style="max-width:1240px;margin:0 auto;padding:88px clamp(20px,5vw,48px) 72px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(36px,5vw,72px);align-items:center">
+      <div>
+        <div style="font-size:12.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#A6480F;margin-bottom:28px">Pianist &amp; Composer</div>
+        <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(56px,7vw,104px);line-height:1.02;margin:0 0 28px;letter-spacing:-.01em">Music for the <em style="color:#D0500E">quiet hours</em>.</h1>
+        <p style="font-size:clamp(18px,2.2vw,21px);max-width:44ch;color:#5C4633;margin:0 0 40px;text-wrap:pretty">I'm Matteo. I write small, warm pieces for piano — music to slow down to, made in a room by the sea.</p>
+        <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap">
+          <a onClick="{{ goBook }}" style="cursor:pointer;background:#D0500E;color:#FBF4E9;padding:14px 30px;border-radius:999px;font-size:17px;letter-spacing:.02em" style-hover="background:#A63C0F">Book an evening</a>
+          <a onClick="{{ goListen }}" style="cursor:pointer;font-size:17px;border-bottom:1px solid rgba(179,64,14,.4);padding-bottom:2px" style-hover="color:#7E2C08">Listen to “Away” →</a>
+        </div>
+      </div>
+      <div style="position:relative">
+        <figure style="margin:0">
+          <img src="assets/away-artwork.png" alt="Away — single artwork" style="width:100%;display:block;border-radius:4px;box-shadow:0 30px 60px -20px rgba(90,40,10,.45)">
+          <figcaption style="font-style:italic;font-size:14.5px;color:#8A6F5C;margin-top:14px">“Away” — single artwork · pastel on paper</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <sc-if value="{{ marqueeOn }}" hint-placeholder-val="{{ true }}">
+    <div style="border-top:1px solid rgba(58,35,16,.16);border-bottom:1px solid rgba(58,35,16,.16);overflow:hidden;padding:14px 0">
+      <div style="display:flex;width:max-content;animation:marq 30s linear infinite;font-family:'Instrument Serif',serif;font-size:22px;color:#B3400E;white-space:nowrap">
+        <span style="padding-right:48px">Booking 2026–27 open&nbsp;&nbsp;·&nbsp;&nbsp;House concerts&nbsp;&nbsp;·&nbsp;&nbsp;Venues &amp; festivals&nbsp;&nbsp;·&nbsp;&nbsp;Film commissions&nbsp;&nbsp;·&nbsp;&nbsp;“Away” — out now&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+        <span style="padding-right:48px">Booking 2026–27 open&nbsp;&nbsp;·&nbsp;&nbsp;House concerts&nbsp;&nbsp;·&nbsp;&nbsp;Venues &amp; festivals&nbsp;&nbsp;·&nbsp;&nbsp;Film commissions&nbsp;&nbsp;·&nbsp;&nbsp;“Away” — out now&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+      </div>
+    </div>
+    </sc-if>
+
+    <section style="max-width:1240px;margin:0 auto;padding:96px clamp(20px,5vw,48px) 24px;text-align:center">
+      <div style="font-size:12.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#A6480F;margin-bottom:36px">About me</div>
+      <img src="assets/matteo-portrait.jpg" alt="Matteo" style="width:min(430px,84vw);aspect-ratio:43/56;object-fit:cover;object-position:72% 18%;border-radius:999px 999px 18px 18px;display:block;margin:0 auto;box-shadow:0 40px 80px -28px rgba(90,40,10,.45)">
+      <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(52px,8.5vw,120px);line-height:.95;margin:40px 0 0;color:#2A1B10">Matteo<span style="color:#D0500E">.</span>gm</h2>
+      <p style="font-size:clamp(18px,2.2vw,21px);color:#5C4633;max-width:52ch;margin:28px auto 32px;text-wrap:pretty">I grew up by the sea, where evenings end slowly. I write and play small, calm pieces for piano — in living rooms, courtyards and little halls — recorded at home, late, with the windows open.</p>
+      <a onClick="{{ goAbout }}" style="cursor:pointer;font-size:17px;border-bottom:1px solid rgba(179,64,14,.4);padding-bottom:2px" style-hover="color:#7E2C08">My story →</a>
+    </section>
+
+    <section data-r="stack" style="max-width:1240px;margin:0 auto;padding:96px clamp(20px,5vw,48px);display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(36px,5vw,72px);align-items:center">
+      <div>
+        <div style="font-size:12.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#A6480F;margin-bottom:20px">Latest release</div>
+        <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(44px,5vw,64px);margin:0 0 18px;line-height:1.05">Away</h2>
+        <p style="color:#5C4633;max-width:42ch;margin:0 0 28px;font-size:19px;text-wrap:pretty">Three minutes of dusk. A single take at the piano, recorded late, windows open. This is what an evening with me sounds like.</p>
+        <a onClick="{{ goListen }}" style="cursor:pointer;font-size:17px;border-bottom:1px solid rgba(179,64,14,.4);padding-bottom:2px">All music →</a>
+      </div>
+      <div style="background:#F3E7D3;border:1px solid rgba(58,35,16,.14);border-radius:18px;padding:26px">
+        <iframe src="https://open.spotify.com/embed/track/21a84S7VrRHXR8GmXGpyty?utm_source=generator" width="100%" height="152" style="border:0;border-radius:12px;display:block" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <!-- Booking band -->
+    <section style="background:#F3E7D3;border-top:1px solid rgba(58,35,16,.16);border-bottom:1px solid rgba(58,35,16,.16)">
+      <div style="max-width:1240px;margin:0 auto;padding:88px clamp(20px,5vw,48px);text-align:center">
+        <div style="font-size:12.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#A6480F;margin-bottom:20px">Booking 2026–27 is open</div>
+        <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(38px,5vw,64px);margin:0 0 44px;line-height:1.05">Have a quiet space<br>and a piano?</h2>
+        <div data-r="stack" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;max-width:980px;margin:0 auto 48px;text-align:left">
+          <div style="background:#FBF4E9;border:1px solid rgba(58,35,16,.14);border-radius:16px;padding:30px">
+            <div style="font-family:'Instrument Serif',serif;font-size:40px;color:#D0500E;line-height:1;margin-bottom:16px">01</div>
+            <h3 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:25px;margin:0 0 8px">House concert</h3>
+            <p style="margin:0;color:#8A6F5C;font-size:16px">Your living room, 20–40 guests, an hour of piano at dusk.</p>
+          </div>
+          <div style="background:#FBF4E9;border:1px solid rgba(58,35,16,.14);border-radius:16px;padding:30px">
+            <div style="font-family:'Instrument Serif',serif;font-size:40px;color:#D0500E;line-height:1;margin-bottom:16px">02</div>
+            <h3 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:25px;margin:0 0 8px">Venue &amp; festival</h3>
+            <p style="margin:0;color:#8A6F5C;font-size:16px">Halls, chapels, galleries, open air — solo or with cello.</p>
+          </div>
+          <div style="background:#FBF4E9;border:1px solid rgba(58,35,16,.14);border-radius:16px;padding:30px">
+            <div style="font-family:'Instrument Serif',serif;font-size:40px;color:#D0500E;line-height:1;margin-bottom:16px">03</div>
+            <h3 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:25px;margin:0 0 8px">Film &amp; commission</h3>
+            <p style="margin:0;color:#8A6F5C;font-size:16px">Original calm music written to your picture and pace.</p>
+          </div>
+        </div>
+        <a onClick="{{ goBook }}" style="cursor:pointer;display:inline-block;background:#D0500E;color:#FBF4E9;padding:16px 42px;border-radius:999px;font-size:17px" style-hover="background:#A63C0F">Book an evening — I reply within 48 h</a>
+      </div>
+    </section>
+
+    <section>
+      <div data-r="stack" style="max-width:1240px;margin:0 auto;padding:72px clamp(20px,5vw,48px) 96px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(32px,4vw,56px)">
+        <div>
+          <div style="font-size:12.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#A6480F;margin-bottom:18px">Next concert</div>
+          <p style="font-family:'Instrument Serif',serif;font-size:27px;line-height:1.25;margin:0 0 14px">12 Sept 2026 — Casa della Musica, Palermo</p>
+          <a onClick="{{ goConcerts }}" style="cursor:pointer;font-size:16px;border-bottom:1px solid rgba(179,64,14,.4)">All dates →</a>
+        </div>
+        <div>
+          <div style="font-size:12.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#A6480F;margin-bottom:18px">From the press</div>
+          <p style="font-family:'Instrument Serif',serif;font-style:italic;font-size:27px;line-height:1.25;margin:0 0 14px">“Small rooms you want to stay in.”</p>
+          <a onClick="{{ goPress }}" style="cursor:pointer;font-size:16px;border-bottom:1px solid rgba(179,64,14,.4)">Press →</a>
+        </div>
+        <div>
+          <div style="font-size:12.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#A6480F;margin-bottom:18px">About</div>
+          <p style="font-family:'Instrument Serif',serif;font-size:27px;line-height:1.25;margin:0 0 14px">Evenings, sea air, and a piano that lives by the window.</p>
+          <a onClick="{{ goAbout }}" style="cursor:pointer;font-size:16px;border-bottom:1px solid rgba(179,64,14,.4)">My story →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <!-- ══════════ ABOUT ══════════ -->
+  <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+  <main data-screen-label="About" data-r="stack" style="max-width:1240px;margin:0 auto;padding:80px clamp(20px,5vw,48px) 110px;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(36px,6vw,80px);align-items:start">
+    <figure data-r="unstick" style="margin:0;position:sticky;top:110px">
+      <img src="assets/matteo-portrait.jpg" alt="Matteo" style="width:100%;display:block;border-radius:4px;box-shadow:0 26px 52px -18px rgba(90,40,10,.4)">
+      <figcaption style="font-style:italic;font-size:14.5px;color:#8A6F5C;margin-top:14px">Home, just after sunset</figcaption>
+    </figure>
+    <div>
+      <div style="font-size:12.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#A6480F;margin-bottom:24px">About</div>
+      <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(48px,5vw,76px);line-height:1.05;margin:0 0 32px">Hi, I'm <em style="color:#D0500E">Matteo</em>.</h1>
+      <div style="font-size:19.5px;color:#41301F;max-width:58ch;display:grid;gap:22px">
+        <p style="margin:0;text-wrap:pretty">I grew up by the sea, where evenings end slowly. Most of what I write starts there — at the hour when the light turns orange and everything gets a little quieter.</p>
+        <p style="margin:0;text-wrap:pretty">I play piano and I compose small, calm pieces: solo piano, sometimes a cello or a soft layer of tape. I record at home, late, with the windows open, and I like when you can hear the room breathing in a take.</p>
+        <p style="margin:0;text-wrap:pretty">My first single, <em>“Away”</em>, came out in 2026. It's three minutes of dusk — and the beginning of a longer collection I'm writing now.</p>
+        <p style="margin:0;text-wrap:pretty">When I'm not recording, I play living rooms, courtyards and small halls. If you have a quiet space and a piano, we'll get along.</p>
+      </div>
+      <div style="margin-top:52px;border-top:1px solid rgba(58,35,16,.16);padding-top:36px">
+        <div style="font-size:12.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#A6480F;margin-bottom:22px">A few facts</div>
+        <div style="display:grid;gap:14px;font-size:18px">
+          <div style="display:flex;gap:16px"><span style="color:#D0500E">—</span><span>Based in Sicily, Italy · plays across Europe</span></div>
+          <div style="display:flex;gap:16px"><span style="color:#D0500E">—</span><span>Writes for solo piano, piano &amp; cello, and film</span></div>
+          <div style="display:flex;gap:16px"><span style="color:#D0500E">—</span><span>Records at home — one room, one piano, open windows</span></div>
+          <div style="display:flex;gap:16px"><span style="color:#D0500E">—</span><span>Debut single “Away” out now on Spotify</span></div>
+        </div>
+      </div>
+      <a onClick="{{ goBook }}" style="cursor:pointer;display:inline-block;margin-top:44px;background:#D0500E;color:#FBF4E9;padding:14px 30px;border-radius:999px;font-size:17px" style-hover="background:#A63C0F">Book an evening →</a>
+    </div>
+  </main>
+  </sc-if>
+
+  <!-- ══════════ LISTEN ══════════ -->
+  <sc-if value="{{ isListen }}" hint-placeholder-val="{{ false }}">
+  <main data-screen-label="Listen" style="max-width:1240px;margin:0 auto;padding:80px clamp(20px,5vw,48px) 110px">
+    <div style="font-size:12.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#A6480F;margin-bottom:24px">Listen</div>
+    <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(48px,5vw,76px);line-height:1.05;margin:0 0 64px">The <em style="color:#D0500E">music</em>.</h1>
+    <section data-r="stack" style="display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,5vw,64px);align-items:center;background:#F3E7D3;border:1px solid rgba(58,35,16,.14);border-radius:22px;padding:clamp(24px,4vw,48px)">
+      <img src="assets/away-artwork.png" alt="Away — artwork" style="width:100%;display:block;border-radius:6px;box-shadow:0 24px 48px -16px rgba(90,40,10,.4)">
+      <div>
+        <div style="font-size:12.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#A6480F;margin-bottom:14px">Single · 2026</div>
+        <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(40px,4.5vw,56px);margin:0 0 14px;line-height:1">Away</h2>
+        <p style="color:#5C4633;margin:0 0 26px;max-width:46ch;font-size:19px;text-wrap:pretty">One take, late evening. The first page of a longer story — quiet piano for the end of the day.</p>
+        <iframe src="https://open.spotify.com/embed/track/21a84S7VrRHXR8GmXGpyty?utm_source=generator" width="100%" height="152" style="border:0;border-radius:12px;display:block;margin-bottom:24px" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <div style="display:flex;gap:14px;flex-wrap:wrap">
+          <a href="https://open.spotify.com/track/21a84S7VrRHXR8GmXGpyty" target="_blank" style="background:#2A1B10;color:#FBF4E9;padding:11px 24px;border-radius:999px;font-size:15.5px" style-hover="background:#D0500E;color:#FBF4E9">Spotify ↗</a>
+          <a href="#" style="border:1px solid rgba(58,35,16,.3);color:#2A1B10;padding:11px 24px;border-radius:999px;font-size:15.5px" style-hover="border-color:#D0500E;color:#D0500E">YouTube ↗</a>
+        </div>
+      </div>
+    </section>
+    <section style="margin-top:88px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid rgba(58,35,16,.16);padding-top:36px;margin-bottom:40px;gap:16px;flex-wrap:wrap">
+        <h3 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:36px;margin:0">Coming next</h3>
+        <span style="font-style:italic;color:#8A6F5C;font-size:16px">two pieces on their way to streaming</span>
+      </div>
+      <div data-r="stack" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,4vw,48px)">
+        <div>
+          <div style="aspect-ratio:1;border-radius:6px;overflow:hidden"><image-slot id="cover-vespro" shape="rect" placeholder="Drop the “Vespro” cover art"></image-slot></div>
+          <h4 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:28px;margin:18px 0 4px">Vespro</h4>
+          <p style="margin:0;color:#8A6F5C;font-size:16.5px">Piano &amp; cello · autumn 2026</p>
+        </div>
+        <div>
+          <div style="aspect-ratio:1;border-radius:6px;overflow:hidden"><image-slot id="cover-cartoline" shape="rect" placeholder="Drop the “Cartoline” cover art"></image-slot></div>
+          <h4 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:28px;margin:18px 0 4px">Cartoline</h4>
+          <p style="margin:0;color:#8A6F5C;font-size:16.5px">Five miniatures for solo piano · winter 2026</p>
+        </div>
+      </div>
+    </section>
+    <div style="text-align:center;margin-top:80px">
+      <a onClick="{{ goBook }}" style="cursor:pointer;display:inline-block;background:#D0500E;color:#FBF4E9;padding:15px 40px;border-radius:999px;font-size:17px" style-hover="background:#A63C0F">Like it? Book an evening</a>
+    </div>
+  </main>
+  </sc-if>
+
+  <!-- ══════════ WORKS ══════════ -->
+  <sc-if value="{{ isWorks }}" hint-placeholder-val="{{ false }}">
+  <main data-screen-label="Works" style="max-width:1240px;margin:0 auto;padding:80px clamp(20px,5vw,48px) 110px">
+    <div style="font-size:12.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#A6480F;margin-bottom:24px">Works</div>
+    <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(48px,5vw,76px);line-height:1.05;margin:0 0 20px">Catalogue of <em style="color:#D0500E">compositions</em>.</h1>
+    <p style="color:#5C4633;font-size:19px;max-width:56ch;margin:0 0 64px;text-wrap:pretty">Everything I've finished so far — scores available on request. For film and commission work, <a onClick="{{ goBook }}" style="cursor:pointer;border-bottom:1px solid rgba(179,64,14,.4)">write to me</a>.</p>
+    <div style="border-top:1px solid rgba(58,35,16,.25)">
+      <div data-r="works" style="display:grid;grid-template-columns:64px 1.3fr 90px 1fr 90px 140px;gap:20px;padding:26px 0;border-bottom:1px solid rgba(58,35,16,.14);align-items:baseline" style-hover="background:rgba(208,80,14,.05)">
+        <span style="color:#C09B7D;font-size:15px">01</span><span style="font-family:'Instrument Serif',serif;font-size:28px">Away</span><span data-col="year" style="color:#8A6F5C;font-size:16px">2026</span><span data-r="hide" style="color:#5C4633;font-size:16.5px">solo piano</span><span data-r="hide" style="color:#8A6F5C;font-size:16px">3′40″</span><span data-r="hide" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#A6480F">Single</span>
+      </div>
+      <div data-r="works" style="display:grid;grid-template-columns:64px 1.3fr 90px 1fr 90px 140px;gap:20px;padding:26px 0;border-bottom:1px solid rgba(58,35,16,.14);align-items:baseline" style-hover="background:rgba(208,80,14,.05)">
+        <span style="color:#C09B7D;font-size:15px">02</span><span style="font-family:'Instrument Serif',serif;font-size:28px">Vespro</span><span data-col="year" style="color:#8A6F5C;font-size:16px">2026</span><span data-r="hide" style="color:#5C4633;font-size:16.5px">piano &amp; cello</span><span data-r="hide" style="color:#8A6F5C;font-size:16px">6′10″</span><span data-r="hide" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#A6480F">Chamber</span>
+      </div>
+      <div data-r="works" style="display:grid;grid-template-columns:64px 1.3fr 90px 1fr 90px 140px;gap:20px;padding:26px 0;border-bottom:1px solid rgba(58,35,16,.14);align-items:baseline" style-hover="background:rgba(208,80,14,.05)">
+        <span style="color:#C09B7D;font-size:15px">03</span><span style="font-family:'Instrument Serif',serif;font-size:28px">Cartoline</span><span data-col="year" style="color:#8A6F5C;font-size:16px">2026</span><span data-r="hide" style="color:#5C4633;font-size:16.5px">five miniatures, solo piano</span><span data-r="hide" style="color:#8A6F5C;font-size:16px">12′</span><span data-r="hide" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#A6480F">Cycle</span>
+      </div>
+      <div data-r="works" style="display:grid;grid-template-columns:64px 1.3fr 90px 1fr 90px 140px;gap:20px;padding:26px 0;border-bottom:1px solid rgba(58,35,16,.14);align-items:baseline" style-hover="background:rgba(208,80,14,.05)">
+        <span style="color:#C09B7D;font-size:15px">04</span><span style="font-family:'Instrument Serif',serif;font-size:28px">Sea Glass</span><span data-col="year" style="color:#8A6F5C;font-size:16px">2025</span><span data-r="hide" style="color:#5C4633;font-size:16.5px">piano &amp; tape</span><span data-r="hide" style="color:#8A6F5C;font-size:16px">4′30″</span><span data-r="hide" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#A6480F">Ambient</span>
+      </div>
+      <div data-r="works" style="display:grid;grid-template-columns:64px 1.3fr 90px 1fr 90px 140px;gap:20px;padding:26px 0;border-bottom:1px solid rgba(58,35,16,.14);align-items:baseline" style-hover="background:rgba(208,80,14,.05)">
+        <span style="color:#C09B7D;font-size:15px">05</span><span style="font-family:'Instrument Serif',serif;font-size:28px">Sull'acqua</span><span data-col="year" style="color:#8A6F5C;font-size:16px">2024</span><span data-r="hide" style="color:#5C4633;font-size:16.5px">score for short film</span><span data-r="hide" style="color:#8A6F5C;font-size:16px">9′</span><span data-r="hide" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#A6480F">Film</span>
+      </div>
+      <div data-r="works" style="display:grid;grid-template-columns:64px 1.3fr 90px 1fr 90px 140px;gap:20px;padding:26px 0;border-bottom:1px solid rgba(58,35,16,.14);align-items:baseline" style-hover="background:rgba(208,80,14,.05)">
+        <span style="color:#C09B7D;font-size:15px">06</span><span style="font-family:'Instrument Serif',serif;font-size:28px">Prima luce</span><span data-col="year" style="color:#8A6F5C;font-size:16px">2024</span><span data-r="hide" style="color:#5C4633;font-size:16.5px">solo piano</span><span data-r="hide" style="color:#8A6F5C;font-size:16px">5′</span><span data-r="hide" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#A6480F">Solo</span>
+      </div>
+    </div>
+    <p style="font-style:italic;color:#8A6F5C;font-size:16px;margin-top:28px">Sample catalogue — swap in your real works and timings.</p>
+  </main>
+  </sc-if>
+
+  <!-- ══════════ CONCERTS ══════════ -->
+  <sc-if value="{{ isConcerts }}" hint-placeholder-val="{{ false }}">
+  <main data-screen-label="Concerts" style="max-width:1240px;margin:0 auto;padding:80px clamp(20px,5vw,48px) 110px">
+    <div style="font-size:12.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#A6480F;margin-bottom:24px">Concerts</div>
+    <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(48px,5vw,76px);line-height:1.05;margin:0 0 64px">Where to <em style="color:#D0500E">hear me</em>.</h1>
+    <div style="border-top:1px solid rgba(58,35,16,.25)">
+      <div data-r="stack" data-anim="row" style="display:grid;grid-template-columns:150px 1fr 1fr 140px;gap:clamp(12px,2vw,24px);padding:32px 0;border-bottom:1px solid rgba(58,35,16,.14);align-items:center">
+        <div><div style="font-family:'Instrument Serif',serif;font-size:42px;line-height:1">12</div><div style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#A6480F">Sept 2026</div></div>
+        <div><div style="font-family:'Instrument Serif',serif;font-size:26px">Casa della Musica</div><div style="color:#8A6F5C;font-size:16px">Palermo, Italy</div></div>
+        <div style="color:#5C4633;font-size:17px;font-style:italic">Solo piano — “Away” &amp; new pieces</div>
+        <a href="#" style="justify-self:start;border:1px solid rgba(58,35,16,.3);color:#2A1B10;padding:10px 22px;border-radius:999px;font-size:15px" style-hover="border-color:#D0500E;color:#D0500E">Tickets ↗</a>
+      </div>
+      <div data-r="stack" data-anim="row" style="display:grid;grid-template-columns:150px 1fr 1fr 140px;gap:clamp(12px,2vw,24px);padding:32px 0;border-bottom:1px solid rgba(58,35,16,.14);align-items:center">
+        <div><div style="font-family:'Instrument Serif',serif;font-size:42px;line-height:1">03</div><div style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#A6480F">Oct 2026</div></div>
+        <div><div style="font-family:'Instrument Serif',serif;font-size:26px">Piano City — open air</div><div style="color:#8A6F5C;font-size:16px">Milano, Italy</div></div>
+        <div style="color:#5C4633;font-size:17px;font-style:italic">Sunset set, courtyard stage</div>
+        <span style="justify-self:start;font-size:15px;color:#A6480F;letter-spacing:.08em">Free entry</span>
+      </div>
+      <div data-r="stack" data-anim="row" style="display:grid;grid-template-columns:150px 1fr 1fr 140px;gap:clamp(12px,2vw,24px);padding:32px 0;border-bottom:1px solid rgba(58,35,16,.14);align-items:center">
+        <div><div style="font-family:'Instrument Serif',serif;font-size:42px;line-height:1">24</div><div style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#A6480F">Oct 2026</div></div>
+        <div><div style="font-family:'Instrument Serif',serif;font-size:26px">Salle des Saisons</div><div style="color:#8A6F5C;font-size:16px">Paris, France</div></div>
+        <div style="color:#5C4633;font-size:17px;font-style:italic">With cello — “Vespro” premiere</div>
+        <a href="#" style="justify-self:start;border:1px solid rgba(58,35,16,.3);color:#2A1B10;padding:10px 22px;border-radius:999px;font-size:15px" style-hover="border-color:#D0500E;color:#D0500E">Tickets ↗</a>
+      </div>
+    </div>
+    <sc-if value="{{ pastOn }}" hint-placeholder-val="{{ true }}">
+    <section style="margin-top:72px">
+      <h3 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:32px;margin:0 0 24px">Past</h3>
+      <div style="display:grid;gap:12px;color:#8A6F5C;font-size:17px">
+        <div>Jun 2026 — Cortile in Musica · Catania, IT</div>
+        <div>Apr 2026 — Teatro Piccolo · Palermo, IT</div>
+        <div>Nov 2025 — Living-room session · Roma, IT</div>
+      </div>
+    </section>
+    </sc-if>
+    <section data-r="stack" style="margin-top:80px;background:#F3E7D3;border:1px solid rgba(58,35,16,.14);border-radius:22px;padding:clamp(28px,4vw,48px);display:grid;grid-template-columns:1fr auto;justify-content:space-between;align-items:center;gap:32px">
+      <div>
+        <h3 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:34px;margin:0 0 10px">Have a quiet space and a piano?</h3>
+        <p style="margin:0;color:#5C4633;font-size:18px">I love small venues — living rooms, courtyards, chapels, galleries. Booking for 2026–27 is open.</p>
+      </div>
+      <a onClick="{{ goBook }}" style="cursor:pointer;justify-self:start;background:#D0500E;color:#FBF4E9;padding:14px 30px;border-radius:999px;font-size:17px" style-hover="background:#A63C0F">Book a concert →</a>
+    </section>
+  </main>
+  </sc-if>
+
+  <!-- ══════════ GALLERY ══════════ -->
+  <sc-if value="{{ isGallery }}" hint-placeholder-val="{{ false }}">
+  <main data-screen-label="Gallery" style="max-width:1240px;margin:0 auto;padding:80px clamp(20px,5vw,48px) 110px">
+    <div style="font-size:12.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#A6480F;margin-bottom:24px">Gallery</div>
+    <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(48px,5vw,76px);line-height:1.05;margin:0 0 20px">In <em style="color:#D0500E">pictures</em>.</h1>
+    <p style="font-style:italic;color:#8A6F5C;font-size:16.5px;margin:0 0 56px">Drag your photos onto the frames below — they'll stay.</p>
+    <div data-r="stack gal" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:260px;gap:24px">
+      <div data-r="cell" style="grid-column:span 2;grid-row:span 2"><image-slot id="gal-1" shape="rounded" radius="8" placeholder="Live at the piano — wide shot"></image-slot></div>
+      <div><image-slot id="gal-2" shape="rounded" radius="8" placeholder="Portrait, close"></image-slot></div>
+      <div><image-slot id="gal-3" shape="rounded" radius="8" placeholder="The room / studio"></image-slot></div>
+      <div><image-slot id="gal-4" shape="rounded" radius="8" placeholder="Backstage or soundcheck"></image-slot></div>
+      <div data-r="cell" style="grid-column:span 2"><image-slot id="gal-5" shape="rounded" radius="8" placeholder="Audience / venue at dusk"></image-slot></div>
+      <div data-r="cell" style="grid-column:span 3;grid-row:span 2"><image-slot id="gal-6" shape="rounded" radius="8" placeholder="Video still — paste your YouTube performance link over this later"></image-slot></div>
+    </div>
+  </main>
+  </sc-if>
+
+  <!-- ══════════ PRESS ══════════ -->
+  <sc-if value="{{ isPress }}" hint-placeholder-val="{{ false }}">
+  <main data-screen-label="Press" style="max-width:1240px;margin:0 auto;padding:80px clamp(20px,5vw,48px) 110px">
+    <div style="font-size:12.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#A6480F;margin-bottom:24px">Press</div>
+    <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(48px,5vw,76px);line-height:1.05;margin:0 0 72px">Kind <em style="color:#D0500E">words</em>.</h1>
+    <div style="display:grid;gap:64px;max-width:900px">
+      <blockquote style="margin:0">
+        <p style="font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(30px,3.2vw,44px);line-height:1.25;margin:0 0 18px">“Music that feels like the hour before dinner on a long summer day.”</p>
+        <cite style="font-style:normal;font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:#A6480F">The Quiet Review · 2026</cite>
+      </blockquote>
+      <blockquote style="margin:0">
+        <p style="font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(30px,3.2vw,44px);line-height:1.25;margin:0 0 18px">“Matteo.gm writes small rooms you want to stay in.”</p>
+        <cite style="font-style:normal;font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:#A6480F">Neue Klaviermusik · 2026</cite>
+      </blockquote>
+      <blockquote style="margin:0">
+        <p style="font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(30px,3.2vw,44px);line-height:1.25;margin:0 0 18px">“‘Away’ is three minutes of dusk — patient, warm, unhurried.”</p>
+        <cite style="font-style:normal;font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:#A6480F">Onde · Radio · 2026</cite>
+      </blockquote>
+    </div>
+    <p style="font-style:italic;color:#8A6F5C;font-size:16px;margin-top:64px">Placeholder quotes — replace with real press as it arrives.</p>
+    <section style="margin-top:56px;border-top:1px solid rgba(58,35,16,.16);padding-top:40px;display:flex;gap:clamp(28px,5vw,56px);font-size:17px;flex-wrap:wrap">
+      <div><strong style="font-weight:500">Press photos</strong><br><a onClick="{{ goGallery }}" style="cursor:pointer;border-bottom:1px solid rgba(179,64,14,.4)">Download from the gallery →</a></div>
+      <div><strong style="font-weight:500">Interviews &amp; requests</strong><br><a onClick="{{ goBook }}" style="cursor:pointer;border-bottom:1px solid rgba(179,64,14,.4)">press@matteo.gm →</a></div>
+    </section>
+  </main>
+  </sc-if>
+
+  <!-- ══════════ BOOK ══════════ -->
+  <sc-if value="{{ isBook }}" hint-placeholder-val="{{ false }}">
+  <main data-screen-label="Book" data-r="stack" style="max-width:1240px;margin:0 auto;padding:80px clamp(20px,5vw,48px) 110px;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(36px,5vw,72px);align-items:start">
+    <div data-r="unstick" style="position:sticky;top:110px">
+      <img src="assets/matteo-portrait.jpg" alt="Matteo" style="width:150px;height:150px;object-fit:cover;object-position:70% 15%;border-radius:50%;display:block;margin-bottom:28px;box-shadow:0 18px 36px -14px rgba(90,40,10,.4)">
+      <div style="font-size:12.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#A6480F;margin-bottom:18px">Booking</div>
+      <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(40px,4vw,60px);line-height:1.08;margin:0 0 22px">Two minutes, and it's done.</h1>
+      <p style="color:#5C4633;font-size:18px;margin:0 0 32px;max-width:44ch;text-wrap:pretty">Tell me when and where. I reply personally within 48 hours with availability and a simple quote.</p>
+      <div style="display:grid;gap:14px;font-size:17px;color:#41301F">
+        <div style="display:flex;gap:14px;align-items:baseline"><span style="color:#D0500E;font-family:'Instrument Serif',serif">1.</span><span>Send the form — date, place, occasion</span></div>
+        <div style="display:flex;gap:14px;align-items:baseline"><span style="color:#D0500E;font-family:'Instrument Serif',serif">2.</span><span>I confirm availability &amp; quote within 48 h</span></div>
+        <div style="display:flex;gap:14px;align-items:baseline"><span style="color:#D0500E;font-family:'Instrument Serif',serif">3.</span><span>We plan the evening together</span></div>
+      </div>
+      <div style="margin-top:40px;border-top:1px solid rgba(58,35,16,.16);padding-top:26px;font-size:16.5px;color:#8A6F5C;display:grid;gap:10px">
+        <div>Booking — <a href="mailto:booking@matteo.gm" style="border-bottom:1px solid rgba(179,64,14,.4)">booking@matteo.gm</a></div>
+        <div>Commissions — <a href="mailto:hello@matteo.gm" style="border-bottom:1px solid rgba(179,64,14,.4)">hello@matteo.gm</a></div>
+        <div>Press — <a href="mailto:press@matteo.gm" style="border-bottom:1px solid rgba(179,64,14,.4)">press@matteo.gm</a></div>
+      </div>
+    </div>
+    <form onSubmit="{{ sendBooking }}" style="background:#F3E7D3;border:1px solid rgba(58,35,16,.14);border-radius:22px;padding:clamp(26px,4vw,48px);display:grid;gap:22px">
+      <div data-r="stack" style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
+        <label style="display:grid;gap:8px;font-size:12.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#A6480F">Your name
+          <input id="bk-name" required placeholder="Anna Rossi" style="background:#FFFBF2;border:1px solid rgba(58,35,16,.22);border-radius:10px;color:#2A1B10;padding:13px 15px;font-size:16px;letter-spacing:0;text-transform:none;font-weight:400;outline:none" style-focus="border-color:#D0500E">
+        </label>
+        <label style="display:grid;gap:8px;font-size:12.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#A6480F">Email
+          <input id="bk-email" type="email" required placeholder="you@email.com" style="background:#FFFBF2;border:1px solid rgba(58,35,16,.22);border-radius:10px;color:#2A1B10;padding:13px 15px;font-size:16px;letter-spacing:0;text-transform:none;font-weight:400;outline:none" style-focus="border-color:#D0500E">
+        </label>
+      </div>
+      <div data-r="stack" style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
+        <label style="display:grid;gap:8px;font-size:12.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#A6480F">Date (or roughly)
+          <input id="bk-date" placeholder="e.g. mid-October 2026" style="background:#FFFBF2;border:1px solid rgba(58,35,16,.22);border-radius:10px;color:#2A1B10;padding:13px 15px;font-size:16px;letter-spacing:0;text-transform:none;font-weight:400;outline:none" style-focus="border-color:#D0500E">
+        </label>
+        <label style="display:grid;gap:8px;font-size:12.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#A6480F">City &amp; venue
+          <input id="bk-venue" placeholder="Palermo — our living room" style="background:#FFFBF2;border:1px solid rgba(58,35,16,.22);border-radius:10px;color:#2A1B10;padding:13px 15px;font-size:16px;letter-spacing:0;text-transform:none;font-weight:400;outline:none" style-focus="border-color:#D0500E">
+        </label>
+      </div>
+      <label style="display:grid;gap:8px;font-size:12.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#A6480F">Type of booking
+        <select id="bk-type" style="background:#FFFBF2;border:1px solid rgba(58,35,16,.22);border-radius:10px;color:#2A1B10;padding:13px 15px;font-size:16px;letter-spacing:0;text-transform:none;font-weight:400;outline:none" style-focus="border-color:#D0500E">
+          <option>House concert</option>
+          <option>Venue / festival</option>
+          <option>Film / commission</option>
+          <option>Something else</option>
+        </select>
+      </label>
+      <label style="display:grid;gap:8px;font-size:12.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#A6480F">Tell me about the evening
+        <textarea id="bk-message" rows="5" placeholder="The occasion, the room, how many people, whether there's a piano…" style="background:#FFFBF2;border:1px solid rgba(58,35,16,.22);border-radius:10px;color:#2A1B10;padding:13px 15px;font-size:16px;letter-spacing:0;text-transform:none;font-weight:400;outline:none;resize:vertical" style-focus="border-color:#D0500E"></textarea>
+      </label>
+      <button type="submit" disabled="{{ sending }}" style="background:#D0500E;color:#FBF4E9;border:0;padding:16px;border-radius:999px;font-size:17px;cursor:pointer;font-family:'Newsreader',serif" style-hover="background:#A63C0F">{{ sendLabel }}</button>
+      <sc-if value="{{ statusVisible }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:0;text-align:center;font-size:15.5px;color:{{ statusColor }}">{{ statusText }}</p>
+      </sc-if>
+    </form>
+  </main>
+  </sc-if>
+
+  <!-- ══ FOOTER ══ -->
+  <footer style="border-top:1px solid rgba(58,35,16,.16);background:#F3E7D3">
+    <div style="max-width:1240px;margin:0 auto;padding:44px clamp(20px,5vw,48px);display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap">
+      <a onClick="{{ goHome }}" style="font-family:'Instrument Serif',serif;font-size:22px;color:#2A1B10;cursor:pointer">Matteo<span style="color:#D0500E">.</span>gm</a>
+      <div style="display:flex;gap:24px;font-size:15px;color:#8A6F5C;flex-wrap:wrap">
+        <a onClick="{{ goListen }}" style="cursor:pointer;color:#8A6F5C" style-hover="color:#D0500E">Listen</a>
+        <a onClick="{{ goConcerts }}" style="cursor:pointer;color:#8A6F5C" style-hover="color:#D0500E">Concerts</a>
+        <a onClick="{{ goBook }}" style="cursor:pointer;color:#8A6F5C" style-hover="color:#D0500E">Book me</a>
+      </div>
+      <div style="font-size:14.5px;color:#8A6F5C;font-style:italic">© 2026 Matteo.gm · Artwork: “Away”, pastel on paper</div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;emailjsPublicKey&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;YOUR_PUBLIC_KEY&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;EmailJS&quot;},&quot;emailjsServiceId&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;YOUR_SERVICE_ID&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;EmailJS&quot;},&quot;emailjsTemplateId&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;YOUR_TEMPLATE_ID&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;EmailJS&quot;},&quot;showMarquee&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Homepage&quot;},&quot;showPastConcerts&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Concerts&quot;}}">
+class Component extends DCLogic {
+  state = { page: 'home', status: 'idle' };
+  componentDidMount() { this.whenGsap(() => this.animate()); }
+  whenGsap(cb) { (window.gsap && window.ScrollTrigger) ? cb() : setTimeout(() => this.whenGsap(cb), 120); }
+  animate() {
+    const g = window.gsap;
+    const CLEAR = 'opacity,visibility,transform';
+    g.registerPlugin(window.ScrollTrigger);
+    window.ScrollTrigger.getAll().forEach((t) => t.kill());
+    requestAnimationFrame(() => {
+      const main = document.querySelector('main');
+      if (!main) return;
+      // Hero / first block: staggered rise
+      const secs = Array.from(main.querySelectorAll(':scope > section'));
+      const hero = secs.length ? secs[0] : main;
+      const heroKids = Array.from(hero.children).flatMap((c) => (c.children.length > 1 && c.children.length < 8 ? Array.from(c.children) : [c]));
+      g.fromTo(heroKids, { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: .9, stagger: .09, ease: 'power3.out', clearProps: CLEAR });
+      // Sections below: rise on scroll, with inner stagger for grids/cards
+      secs.slice(1).forEach((sec) => {
+        const grid = sec.querySelector('[style*="grid-template-columns"]');
+        const items = grid && grid.children.length > 1 && grid.children.length < 10 ? Array.from(grid.children) : [sec];
+        g.fromTo(items, { autoAlpha: 0, y: 42 }, { autoAlpha: 1, y: 0, duration: .85, stagger: .12, ease: 'power3.out', clearProps: CLEAR,
+          scrollTrigger: { trigger: sec, start: 'top 88%', once: true } });
+      });
+      // List rows (works catalogue, concerts): cascade in
+      main.querySelectorAll('[data-r~="works"], [data-anim="row"]').forEach((row, i) => {
+        g.fromTo(row, { autoAlpha: 0, x: -28 }, { autoAlpha: 1, x: 0, duration: .7, delay: .08 * i, ease: 'power2.out', clearProps: CLEAR,
+          scrollTrigger: { trigger: row, start: 'top 92%', once: true } });
+      });
+      // Blockquotes (press): soft fade up
+      main.querySelectorAll('blockquote').forEach((q) => {
+        g.fromTo(q, { autoAlpha: 0, y: 36 }, { autoAlpha: 1, y: 0, duration: .9, ease: 'power3.out', clearProps: CLEAR,
+          scrollTrigger: { trigger: q, start: 'top 90%', once: true } });
+      });
+      // Images: gentle scale settle
+      main.querySelectorAll('figure > img, img[alt="Away — artwork"]').forEach((im) => {
+        g.fromTo(im, { scale: 1.04 }, { scale: 1, duration: 1.4, ease: 'power2.out', clearProps: 'transform',
+          scrollTrigger: { trigger: im, start: 'top 90%', once: true } });
+      });
+      // Booking form fields: cascade
+      const form = main.querySelector('form');
+      if (form) {
+        g.fromTo(form.children, { autoAlpha: 0, y: 22 }, { autoAlpha: 1, y: 0, duration: .6, stagger: .08, ease: 'power2.out', delay: .25, clearProps: CLEAR });
+      }
+      // Nav underline feel: subtle drop-in on page change
+      const nav = document.querySelector('nav');
+      if (nav) g.fromTo(nav, { y: -10, autoAlpha: .6 }, { y: 0, autoAlpha: 1, duration: .5, ease: 'power2.out', clearProps: CLEAR });
+    });
+  }
+  go(page) { this.setState({ page }, () => { window.scrollTo({ top: 0 }); this.whenGsap(() => this.animate()); }); }
+  sendBooking = (e) => {
+    e.preventDefault();
+    const cfg = {
+      publicKey: this.props.emailjsPublicKey ?? 'YOUR_PUBLIC_KEY',
+      serviceId: this.props.emailjsServiceId ?? 'YOUR_SERVICE_ID',
+      templateId: this.props.emailjsTemplateId ?? 'YOUR_TEMPLATE_ID',
+    };
+    const v = (id) => (document.getElementById(id) || {}).value || '';
+    const params = {
+      from_name: v('bk-name'), reply_to: v('bk-email'), date: v('bk-date'),
+      venue: v('bk-venue'), booking_type: v('bk-type'), message: v('bk-message'),
+    };
+    if (cfg.publicKey === 'YOUR_PUBLIC_KEY') {
+      this.setState({ status: 'error', errMsg: 'EmailJS keys not set yet — add them in Tweaks, or email booking@matteo.gm directly.' });
+      return;
+    }
+    this.setState({ status: 'sending' });
+    window.emailjs.send(cfg.serviceId, cfg.templateId, params, { publicKey: cfg.publicKey })
+      .then(() => this.setState({ status: 'sent' }))
+      .catch((err) => this.setState({ status: 'error', errMsg: 'Something went wrong (' + (err && err.text || 'network') + '). Try again or email booking@matteo.gm.' }));
+  };
+  renderVals() {
+    const p = this.state.page, s = this.state.status;
+    const ink = '#2A1B10', acc = '#D0500E';
+    const navColor = (k) => (p === k ? acc : ink);
+    return {
+      isHome: p === 'home', isAbout: p === 'about', isListen: p === 'listen',
+      isWorks: p === 'works', isConcerts: p === 'concerts', isGallery: p === 'gallery',
+      isPress: p === 'press', isBook: p === 'book',
+      nav: {
+        home: navColor('home'), about: navColor('about'), listen: navColor('listen'),
+        works: navColor('works'), concerts: navColor('concerts'), gallery: navColor('gallery'),
+        press: navColor('press'),
+      },
+      goHome: () => this.go('home'), goAbout: () => this.go('about'),
+      goListen: () => this.go('listen'), goWorks: () => this.go('works'),
+      goConcerts: () => this.go('concerts'), goGallery: () => this.go('gallery'),
+      goPress: () => this.go('press'), goBook: () => this.go('book'),
+      marqueeOn: this.props.showMarquee ?? true,
+      pastOn: this.props.showPastConcerts ?? true,
+      sendBooking: this.sendBooking,
+      sending: s === 'sending',
+      sendLabel: s === 'sending' ? 'Sending…' : (s === 'sent' ? 'Sent — talk soon ✓' : 'Send booking request'),
+      statusVisible: s === 'sent' || s === 'error',
+      statusText: s === 'sent' ? 'Thank you! Your request is in my inbox — I reply within 48 hours.' : (this.state.errMsg || ''),
+      statusColor: s === 'sent' ? '#3f7d3f' : '#b3400e',
+    };
+  }
+}
+</script>
+</body>
+</html>
