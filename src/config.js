@@ -3,7 +3,7 @@
  *
  * The `showMarquee` / `showPastConcerts` flags replace the old runtime "Tweaks"
  * props; flip them here. EmailJS credentials come from `.env` (see .env.example)
- * — the public key is meant to be shipped in the browser bundle.
+ * The public key is meant to be shipped in the browser bundle.
  */
 export const siteConfig = {
   showMarquee: true,

@@ -14,7 +14,7 @@ const EMPTY = {
 };
 
 const steps = [
-  'Send the form — date, place, occasion',
+  'Send the form: date, place, occasion',
   'I confirm availability & quote within 48 h',
   'We plan the evening together',
 ];
@@ -33,7 +33,7 @@ export default function Book() {
     if (!isEmailjsConfigured) {
       setStatus('error');
       setErrorMessage(
-        `EmailJS keys not set yet — add them to .env, or email ${contact.booking} directly.`,
+        `EmailJS keys not set yet. Add them to .env, or email ${contact.booking} directly.`,
       );
       return;
     }
@@ -67,7 +67,7 @@ export default function Book() {
     status === 'sending'
       ? 'Sending…'
       : status === 'sent'
-        ? 'Sent — talk soon ✓'
+        ? 'Sent, talk soon ✓'
         : 'Send booking request';
 
   /* The form is the point of this page, so it comes first in the source: on
@@ -123,33 +123,14 @@ export default function Book() {
       <div
         style={{
           marginTop: 40,
-       
+
           paddingTop: 26,
           fontSize: 16.5,
           color: 'var(--muted-2)',
           display: 'grid',
           gap: 10,
         }}
-      >
-        <div>
-          Booking —{' '}
-          <a href={`mailto:${contact.booking}`} className="link-u link-u--sm">
-            {contact.booking}
-          </a>
-        </div>
-        <div>
-          Commissions —{' '}
-          <a href={`mailto:${contact.hello}`} className="link-u link-u--sm">
-            {contact.hello}
-          </a>
-        </div>
-        <div>
-          Press —{' '}
-          <a href={`mailto:${contact.press}`} className="link-u link-u--sm">
-            {contact.press}
-          </a>
-        </div>
-      </div>
+      ></div>
     </div>
   );
 
@@ -192,7 +173,7 @@ export default function Book() {
           <label className="field">
             City &amp; venue
             <input
-              placeholder="Palermo — our living room"
+              placeholder="Palermo, our living room"
               value={form.venue}
               onChange={update('venue')}
             />
@@ -225,7 +206,7 @@ export default function Book() {
         {(status === 'sent' || status === 'error') && (
           <p className={`form__status ${status === 'sent' ? 'is-ok' : 'is-error'}`} role="status">
             {status === 'sent'
-              ? 'Thank you! Your request is in my inbox — I reply within 48 hours.'
+              ? 'Thank you! Your request is in my inbox. I reply within 48 hours.'
               : errorMessage}
           </p>
         )}

@@ -20,7 +20,7 @@ export default function Home() {
             Music for the <em className="accent">quiet hours</em>.
           </h1>
           <p className="lede" style={{ maxWidth: '44ch', marginBottom: 40 }}>
-            I’m Matteo. I write small, warm pieces for piano — music to slow down to, made in a room
+            I’m Matteo. I write small, warm pieces for piano, music to slow down to, made in a room
             by the sea.
           </p>
           <div style={{ display: 'flex', gap: 24, alignItems: 'center', flexWrap: 'wrap' }}>
@@ -38,7 +38,7 @@ export default function Home() {
             <img
               data-anim="settle"
               src="/assets/away-artwork.png"
-              alt="Away — single artwork"
+              alt="Away, single artwork"
               style={{
                 width: '100%',
                 display: 'block',
@@ -46,7 +46,7 @@ export default function Home() {
                 boxShadow: 'var(--shadow-lg)',
               }}
             />
-            <figcaption className="caption">“Away” — single artwork · pastel on paper</figcaption>
+            <figcaption className="caption">“Away” · single artwork · pastel on paper</figcaption>
           </figure>
         </div>
       </section>
@@ -81,10 +81,10 @@ export default function Home() {
         >
           Matteo<span className="accent">.</span>gm
         </h2>
-        <p className="lede" style={{ maxWidth: '52ch', margin: '28px auto 32px' }}>
-          I grew up by the sea, where evenings end slowly. I write and play small, calm pieces for
-          piano — in living rooms, courtyards and little halls — recorded at home, late, with the
-          windows open.
+        <p className="lede" style={{ maxWidth: '55vh', margin: '28px auto 32px' }}>
+          Passionate about music since my first memories, I write and play calm pieces for
+          piano, alone with the purpose of creating intimate, reflective moments. I also compose original music for videogames and other
+          media.
         </p>
         <Link to="/about" className="link-u">
           My story →
@@ -146,7 +146,7 @@ export default function Home() {
           </div>
 
           <Link to="/book" className="btn btn--xl">
-            Book an evening — I reply within 48 h
+            Book an evening
           </Link>
         </div>
       </section>
@@ -162,7 +162,7 @@ export default function Home() {
               Next concert
             </div>
             <p className="serif" style={{ fontSize: 27, lineHeight: 1.25, margin: '0 0 14px' }}>
-              12 Sept 2026 — Casa della Musica, Palermo
+              12 Sept 2026 · Casa della Musica, Palermo
             </p>
             <Link to="/concerts" className="link-u link-u--sm">
               All dates →

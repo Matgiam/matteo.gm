@@ -62,7 +62,7 @@ export default function Concerts() {
             Have a quiet space and a piano?
           </h3>
           <p style={{ margin: 0, color: 'var(--muted)', fontSize: 18 }}>
-            I love small venues — living rooms, courtyards, chapels, galleries. Booking for 2026–27
+            I love small venues: living rooms, courtyards, chapels, galleries. Booking for 2026–27
             is open.
           </p>
         </div>

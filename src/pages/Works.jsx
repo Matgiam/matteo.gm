@@ -14,7 +14,7 @@ export default function Works() {
         Catalogue of <em className="accent">compositions</em>.
       </h1>
       <p style={{ color: 'var(--muted)', fontSize: 19, maxWidth: '56ch', margin: '0 0 64px' }}>
-        Everything I’ve finished so far — scores available on request. For film and commission work,{' '}
+        Everything I’ve finished so far. Scores available on request. For film and commission work,{' '}
         <Link to="/book" className="link-u link-u--sm">
           write to me
         </Link>
@@ -35,7 +35,7 @@ export default function Works() {
       </div>
 
       <p className="note" style={{ marginTop: 28 }}>
-        Sample catalogue — swap in your real works and timings.
+        Sample catalogue. Swap in your real works and timings.
       </p>
     </main>
   );

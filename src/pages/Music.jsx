@@ -21,7 +21,7 @@ export default function Music() {
         <img
           data-anim="settle"
           src="/assets/away-artwork.png"
-          alt="Away — artwork"
+          alt="Away, artwork"
           style={{
             width: '100%',
             display: 'block',
@@ -41,7 +41,7 @@ export default function Music() {
             Away
           </h2>
           <p style={{ color: 'var(--muted)', margin: '0 0 26px', maxWidth: '46ch', fontSize: 19 }}>
-            One take, late evening. The first page of a longer story — quiet piano for the end of
+            One take, late evening. The first page of a longer story, quiet piano for the end of
             the day.
           </p>
 

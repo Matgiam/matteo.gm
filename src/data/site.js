@@ -16,7 +16,7 @@ export const marqueeItems = [
   'House concerts',
   'Venues & festivals',
   'Film commissions',
-  '“Away” — out now',
+  '“Away” out now',
 ];
 
 export const bookingKinds = [
@@ -28,7 +28,7 @@ export const bookingKinds = [
   {
     n: '02',
     title: 'Venue & festival',
-    body: 'Halls, chapels, galleries, open air — solo or with cello.',
+    body: 'Halls, chapels, galleries, open air. Solo or with cello.',
   },
   {
     n: '03',
@@ -102,13 +102,13 @@ export const concerts = [
     month: 'Sept 2026',
     venue: 'Casa della Musica',
     city: 'Palermo, Italy',
-    description: 'Solo piano — “Away” & new pieces',
+    description: 'Solo piano: “Away” & new pieces',
     ticketUrl: '#',
   },
   {
     day: '03',
     month: 'Oct 2026',
-    venue: 'Piano City — open air',
+    venue: 'Piano City, open air',
     city: 'Milano, Italy',
     description: 'Sunset set, courtyard stage',
     freeEntry: true,
@@ -118,15 +118,15 @@ export const concerts = [
     month: 'Oct 2026',
     venue: 'Salle des Saisons',
     city: 'Paris, France',
-    description: 'With cello — “Vespro” premiere',
+    description: 'With cello: “Vespro” premiere',
     ticketUrl: '#',
   },
 ];
 
 export const pastConcerts = [
-  'Jun 2026 — Cortile in Musica · Catania, IT',
-  'Apr 2026 — Teatro Piccolo · Palermo, IT',
-  'Nov 2025 — Living-room session · Roma, IT',
+  'Jun 2026 · Cortile in Musica · Catania, IT',
+  'Apr 2026 · Teatro Piccolo · Palermo, IT',
+  'Nov 2025 · Living-room session · Roma, IT',
 ];
 
 export const pressQuotes = [
@@ -139,13 +139,13 @@ export const pressQuotes = [
     source: 'Neue Klaviermusik · 2026',
   },
   {
-    quote: '‘Away’ is three minutes of dusk — patient, warm, unhurried.',
+    quote: '‘Away’ is three minutes of dusk: patient, warm, unhurried.',
     source: 'Onde · Radio · 2026',
   },
 ];
 
 export const galleryCells = [
-  { id: 'gal-1', className: 'gallery__cell--big', placeholder: 'Live at the piano — wide shot' },
+  { id: 'gal-1', className: 'gallery__cell--big', placeholder: 'Live at the piano, wide shot' },
   { id: 'gal-2', placeholder: 'Portrait, close' },
   { id: 'gal-3', placeholder: 'The room / studio' },
   { id: 'gal-4', placeholder: 'Backstage or soundcheck' },
@@ -153,6 +153,6 @@ export const galleryCells = [
   {
     id: 'gal-6',
     className: 'gallery__cell--full',
-    placeholder: 'Video still — paste your YouTube performance link over this later',
+    placeholder: 'Video still. Paste your YouTube performance link over this later',
   },
 ];

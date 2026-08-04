@@ -25,7 +25,7 @@ export default function Press() {
       </div>
 
       <p className="note" style={{ marginTop: 64 }}>
-        Placeholder quotes — replace with real press as it arrives.
+        Placeholder quotes. Replace with real press as it arrives.
       </p>
 
       <section

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 /**
- * A user-fillable image placeholder — the React replacement for the old
+ * A user-fillable image placeholder, the React replacement for the old
  * <image-slot> custom element. Drop an image file on it (or click to browse)
  * and it sticks: the picture is downscaled and kept in localStorage under the
  * slot's `id`, so it survives reloads in that browser.
@@ -60,7 +60,7 @@ export default function ImageSlot({
     try {
       setStored(window.localStorage.getItem(STORAGE_PREFIX + id) || '');
     } catch {
-      // private mode / storage disabled — the slot just stays empty
+      // private mode / storage disabled; the slot just stays empty
     }
   }, [id]);
 
@@ -129,7 +129,7 @@ export default function ImageSlot({
         type="button"
         className="slot__pick"
         onClick={() => inputRef.current?.click()}
-        aria-label={`${placeholder} — click or drop an image here`}
+        aria-label={`${placeholder}. Click or drop an image here`}
       >
         {!shown && (
           <span className="slot__empty">

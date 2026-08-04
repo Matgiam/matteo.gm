@@ -14,7 +14,7 @@ export default function Gallery() {
         In <em className="accent">pictures</em>.
       </h1>
       <p className="note" style={{ fontSize: 16.5, margin: '0 0 56px' }}>
-        Drag your photos onto the frames below — they’ll stay in this browser.
+        Drag your photos onto the frames below. They’ll stay in this browser.
       </p>
 
       <div className="gallery">

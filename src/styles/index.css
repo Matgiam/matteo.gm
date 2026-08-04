@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════════
-   Matteo.gm — design tokens
+   Matteo.gm design tokens
    ══════════════════════════════════════════════════════════════ */
 :root {
   --paper: #fbf4e9;
@@ -88,7 +88,7 @@ img {
 main {
   flex: 1 0 auto;
   /* #root is a column flex container. `.shell` puts `margin: 0 auto` on <main>,
-     and an auto cross-axis margin cancels the default `align-items: stretch` —
+     and an auto cross-axis margin cancels the default `align-items: stretch`,
      without an explicit width the page collapses to its content width. */
   width: 100%;
 }
@@ -599,7 +599,7 @@ main {
   border-radius: 12px;
 }
 
-/* Narrower than this, the compact player's single row collides with itself —
+/* Narrower than this, the compact player's single row collides with itself;
    the extra height makes Spotify fall back to its stacked card layout. */
 @media (max-width: 480px) {
   .spotify-embed {
@@ -1094,7 +1094,7 @@ main {
     gap: 14px;
   }
 
-  /* Captions have half the width to live in — stop them wrapping four deep. */
+  /* Captions have half the width to live in, so stop them wrapping four deep. */
   .slot__empty {
     font-size: 13.5px;
     padding: 12px;

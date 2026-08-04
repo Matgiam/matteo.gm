@@ -4,7 +4,7 @@ import { usePageAnimation } from '../hooks/usePageAnimation';
 const facts = [
   'Based in Sicily, Italy · plays across Europe',
   'Writes for solo piano, piano & cello, and film',
-  'Records at home — one room, one piano, open windows',
+  'Records at home: one room, one piano, open windows',
   'Debut single “Away” out now on Spotify',
 ];
 
@@ -46,7 +46,7 @@ export default function About() {
           }}
         >
           <p style={{ margin: 0, textWrap: 'pretty' }}>
-            I grew up by the sea, where evenings end slowly. Most of what I write starts there — at
+            I grew up by the sea, where evenings end slowly. Most of what I write starts there, at
             the hour when the light turns orange and everything gets a little quieter.
           </p>
           <p style={{ margin: 0, textWrap: 'pretty' }}>
@@ -55,7 +55,7 @@ export default function About() {
             hear the room breathing in a take.
           </p>
           <p style={{ margin: 0, textWrap: 'pretty' }}>
-            My first single, <em>“Away”</em>, came out in 2026. It’s three minutes of dusk — and the
+            My first single, <em>“Away”</em>, came out in 2026. It’s three minutes of dusk, and the
             beginning of a longer collection I’m writing now.
           </p>
           <p style={{ margin: 0, textWrap: 'pretty' }}>

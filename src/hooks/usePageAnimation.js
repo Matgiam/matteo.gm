@@ -24,7 +24,7 @@ export function usePageAnimation() {
       // Hero / first block: staggered rise
       const sections = Array.from(main.querySelectorAll(':scope > section'));
       const hero = sections[0] || main;
-      // A form gets its own cascade below — animating it here too stalls the reveal.
+      // A form gets its own cascade below; animating it here too stalls the reveal.
       const heroKids = Array.from(hero.children)
         .filter((c) => c.tagName !== 'FORM')
         .flatMap((c) =>
@@ -125,7 +125,7 @@ export function usePageAnimation() {
       }
     }, main);
 
-    // Nav lives outside the page scope — subtle drop-in on page change
+    // Nav lives outside the page scope; subtle drop-in on page change
     const nav = document.querySelector('nav');
     if (nav) {
       gsap.fromTo(
