@@ -5,5 +5,9 @@ dist-ssr
 .env
 .env.*
 !.env.example
+# Supabase CLI state and function secrets
+supabase/.temp
+supabase/.branches
+supabase/.env
 .DS_Store
 *.log

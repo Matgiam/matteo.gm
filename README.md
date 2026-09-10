@@ -69,6 +69,15 @@ browser console lists any key the French file is missing, and English is shown
 in its place so nothing goes blank. Concert dates are written once, as ISO dates
 in `data/site.js`, and formatted for each language automatically.
 
+## Booking calendar (Supabase)
+
+On the booking page visitors can pick a free evening (green), which puts it on
+hold (orange) until it is accepted (red) or declined from the dashboard at
+`/admin`. The database schema is in `supabase/migrations/`, the Edge Functions
+that send the emails in `supabase/functions/`. The one-time setup (in French)
+is in [docs/reservations.md](docs/reservations.md). `npm run dev:mock` runs the
+calendar and the dashboard on fake data, with no backend.
+
 ## Booking form (EmailJS)
 
 Copy `.env.example` to `.env` and fill in the three values from your

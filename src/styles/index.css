@@ -266,6 +266,11 @@ main {
 
 .btn-outline {
   display: inline-block;
+  /* also used on <button>, which would otherwise keep the browser's grey and system font */
+  background: none;
+  font-family: var(--body);
+  line-height: 1.65;
+  cursor: pointer;
   border: 1px solid var(--line-btn);
   color: var(--ink);
   padding: 11px 24px;
@@ -999,6 +1004,607 @@ main {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--accent-deep);
+}
+
+/* ══ booking calendar ══ */
+:root {
+  --free: #5b8a4c;
+  --pending: #d4962a;
+  --busy: #b0402c;
+}
+
+.cal {
+  display: grid;
+  gap: 16px;
+}
+
+.cal.is-loading .cal__days {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.cal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cal__month {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.cal__nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  padding: 0;
+  border: 1px solid var(--line-btn);
+  border-radius: 50%;
+  background: none;
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.cal__nav:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.cal__nav:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.cal__nav:focus-visible,
+.cal__day:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.cal__weekdays,
+.cal__days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.cal__weekdays span {
+  padding-bottom: 2px;
+  text-align: center;
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+.cal__day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 54px;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: none;
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.cal__day:hover:not(:disabled) {
+  background: var(--paper);
+}
+
+.cal__day:disabled {
+  cursor: default;
+}
+
+.cal__day.is-today {
+  box-shadow: inset 0 0 0 1px var(--line-strong);
+}
+
+.cal__day--pending .cal__num,
+.cal__day--unavailable .cal__num,
+.cal__day--confirmed .cal__num {
+  color: var(--muted-2);
+}
+
+.cal__day--unavailable .cal__num {
+  text-decoration: line-through;
+  text-decoration-color: rgba(176, 64, 44, 0.6);
+}
+
+.cal__day--blocked {
+  background: repeating-linear-gradient(135deg, transparent 0 6px, rgba(176, 64, 44, 0.09) 6px 9px);
+}
+
+.cal__day--out .cal__num {
+  color: var(--faint);
+}
+
+.cal__day.is-selected,
+.cal__day.is-selected:hover {
+  background: var(--ink);
+}
+
+.cal__day.is-selected .cal__num {
+  color: var(--paper);
+}
+
+.cal__dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.cal__dot--free {
+  background: var(--free);
+}
+
+.cal__dot--pending {
+  width: 8px;
+  height: 8px;
+  box-shadow: inset 0 0 0 2px var(--pending);
+}
+
+.cal__dot--busy {
+  background: var(--busy);
+}
+
+.cal__dot--hatched {
+  outline: 1px dashed var(--busy);
+  outline-offset: 2px;
+}
+
+.cal__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin: 0;
+  padding: 14px 0 0;
+  border-top: 1px solid var(--line-soft);
+  list-style: none;
+  font-size: 14.5px;
+  color: var(--muted);
+}
+
+.cal__legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+
+@media (max-width: 480px) {
+  .cal__month {
+    font-size: 25px;
+  }
+
+  .cal__day {
+    height: 44px;
+    gap: 5px;
+    font-size: 15px;
+  }
+}
+
+/* ══ booking page: date or message ══ */
+.book__form {
+  display: grid;
+  gap: 28px;
+  align-content: start;
+}
+
+.book__modes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--line-input);
+  border-radius: 999px;
+  background: var(--field);
+}
+
+.book__mode {
+  padding: 11px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--muted);
+  font-family: var(--body);
+  font-size: 15.5px;
+  line-height: 1.3;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.book__mode:hover {
+  color: var(--accent);
+}
+
+.book__mode[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--paper);
+  cursor: default;
+}
+
+.book__mode:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.book__calendar {
+  display: grid;
+  gap: 18px;
+}
+
+.book__lead {
+  margin: 0;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--muted-2);
+  text-wrap: pretty;
+}
+
+.book__selected {
+  margin: 0;
+  padding: 14px 18px;
+  border: 1px dashed var(--line-input);
+  border-radius: 14px;
+  background: var(--field);
+  color: var(--muted-2);
+  font-size: 15.5px;
+  text-align: center;
+}
+
+.book__selected.is-set {
+  border-style: solid;
+  border-color: var(--ink);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1.25;
+}
+
+.book__unreachable,
+.book__success {
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+}
+
+.book__unreachable {
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: var(--field);
+  color: var(--muted);
+}
+
+.book__unreachable p,
+.book__success p {
+  margin: 0;
+}
+
+.book__success p {
+  font-family: var(--serif);
+  font-size: 26px;
+  line-height: 1.3;
+  text-wrap: pretty;
+}
+
+/* honeypot: off-screen for people, still in the form for bots */
+.hp {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+@media (max-width: 480px) {
+  .book__mode {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+
+  .book__success p {
+    font-size: 22px;
+  }
+}
+
+/* ══ admin dashboard ══ */
+.admin {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.admin__bar {
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.admin__bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.admin__bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.admin__main {
+  padding-top: 48px;
+  padding-bottom: 90px;
+}
+
+.admin__card {
+  display: grid;
+  gap: 14px;
+  max-width: 440px;
+  margin: 32px auto 0;
+}
+
+.admin__title {
+  font-size: clamp(40px, 5vw, 60px);
+}
+
+.admin__lede {
+  margin: 0 0 10px;
+  color: var(--muted);
+}
+
+.admin__loading {
+  margin-top: 60px;
+  text-align: center;
+  font-style: italic;
+  color: var(--muted-2);
+}
+
+.admin__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.admin__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 48px);
+  align-items: start;
+}
+
+.admin__calendar {
+  position: sticky;
+  top: 24px;
+  display: grid;
+  gap: 18px;
+}
+
+.admin__h2,
+.admin__h3,
+.admin__group-title {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.admin__h2 {
+  font-size: 32px;
+}
+
+.admin__h3 {
+  font-size: 24px;
+}
+
+.admin__range {
+  display: grid;
+  gap: 14px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-soft);
+}
+
+.admin__requests {
+  display: grid;
+  gap: 44px;
+}
+
+.admin__group {
+  display: grid;
+  gap: 14px;
+}
+
+.admin__group-title {
+  font-size: 28px;
+}
+
+.admin__count {
+  font-family: var(--body);
+  font-size: 15px;
+  color: var(--muted-2);
+}
+
+.admin__empty {
+  margin: 0;
+  font-style: italic;
+  color: var(--muted-2);
+}
+
+.req {
+  display: grid;
+  gap: 10px;
+  padding: 22px 24px;
+  border: 1px solid var(--line-soft);
+  border-radius: 18px;
+  background: var(--paper-2);
+  scroll-margin-top: 24px;
+  transition: box-shadow 0.3s ease;
+}
+
+.req.is-focused {
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.req__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.req__day {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.req__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.req__status::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--faint);
+}
+
+.req__status--pending::before {
+  background: transparent;
+  box-shadow: inset 0 0 0 2px var(--pending);
+}
+
+.req__status--confirmed::before {
+  background: var(--busy);
+}
+
+.req__name {
+  margin: 0;
+  font-size: 19px;
+}
+
+.req__details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 18px;
+  margin: 0;
+  font-size: 15.5px;
+}
+
+.req__details div {
+  min-width: 0;
+}
+
+.req__details dt {
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+}
+
+.req__details dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.req__message {
+  margin: 4px 0 0;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--paper);
+  color: var(--ink-2);
+  font-style: italic;
+  white-space: pre-line;
+}
+
+.req__meta {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted-2);
+}
+
+.req__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.req__confirm {
+  display: grid;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--line-input);
+  border-radius: 12px;
+  background: var(--field);
+}
+
+.req__confirm p {
+  margin: 0;
+}
+
+@media (max-width: 920px) {
+  .admin__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin__calendar {
+    position: static;
+  }
+}
+
+@media (max-width: 480px) {
+  .req {
+    padding: 18px;
+  }
+
+  .req__details {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ══ footer ══ */

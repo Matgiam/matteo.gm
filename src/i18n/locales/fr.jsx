@@ -337,6 +337,127 @@ const fr = {
         `Une erreur est survenue (${detail}). Veuillez réessayer, ou écrire à ${email}.`,
       network: 'réseau',
     },
+    modes: {
+      label: `Comment souhaitez-vous me contacter${nbsp}?`,
+      date: 'Choisir une date',
+      message: 'Envoyer un message',
+    },
+    phone: { label: 'Téléphone', placeholder: '+32 470 12 34 56' },
+    dated: {
+      intro:
+        'Choisissez une soirée libre. Elle reste posée en option pour vous pendant 7 jours, le temps d’en parler ensemble.',
+      unreachable:
+        'Le calendrier est momentanément inaccessible. Vous pouvez toujours m’envoyer un message.',
+      switchToMessage: 'Envoyer un message à la place',
+      pickFirst: 'Choisissez d’abord une soirée disponible dans le calendrier.',
+      selected: (date) => `Soirée du ${date}`,
+      submit: 'Demander cette soirée',
+      sending: 'Envoi en cours…',
+      success: (date) =>
+        `Merci. La soirée du ${date} est désormais posée en option pour vous pendant 7 jours. Vous allez recevoir un e-mail, et je vous appelle très vite pour en parler.`,
+      another: 'Demander une autre date',
+    },
+    bookingErrors: {
+      day_taken: 'Quelqu’un vient de demander cette soirée. Choisissez une autre date.',
+      day_unavailable: 'Cette soirée n’est plus disponible. Choisissez une autre date.',
+      invalid_day: 'Cette date ne peut pas être réservée. Choisissez-en une autre.',
+      invalid_input: `Vérifiez vos coordonnées${nbsp}: nom, e-mail et téléphone.`,
+      rate_limited:
+        'Trop de demandes pour le moment. Réessayez plus tard, ou envoyez-moi un message.',
+      unknown: 'Une erreur est survenue. Réessayez, ou envoyez-moi un message.',
+    },
+  },
+
+  calendar: {
+    previous: 'Mois précédent',
+    next: 'Mois suivant',
+    status: {
+      free: 'Disponible',
+      pending: 'Option en cours',
+      unavailable: 'Indisponible',
+      confirmed: 'Réservé',
+      blocked: 'Bloqué',
+      out: 'Hors période',
+    },
+  },
+
+  admin: {
+    eyebrow: 'Espace privé',
+    backToSite: 'Retour au site',
+    signOut: 'Se déconnecter',
+    notConfigured: `Supabase n’est pas configuré${nbsp}: ajoutez VITE_SUPABASE_URL et VITE_SUPABASE_PUBLISHABLE_KEY.`,
+    login: {
+      title: 'Connexion',
+      lede: 'Saisissez votre adresse e-mail pour recevoir un lien de connexion.',
+      email: 'Adresse e-mail',
+      submit: 'Recevoir le lien',
+      sending: 'Envoi en cours…',
+      sent: 'Si cette adresse a accès, un lien de connexion est en route. Ouvrez-le sur cet appareil.',
+      rateLimited: 'Trop de tentatives. Patientez quelques minutes.',
+    },
+    confirm: {
+      title: 'Confirmer la connexion',
+      lede: 'Un dernier clic pour ouvrir le tableau de bord.',
+      submit: 'Se connecter',
+      working: 'Connexion…',
+      expired: 'Ce lien a expiré ou a déjà servi. Demandez-en un nouveau.',
+      newLink: 'Recevoir un nouveau lien',
+    },
+    denied: 'Ce compte n’a pas accès au tableau de bord.',
+    dashboard: {
+      title: 'Réservations',
+      calendarTitle: 'Calendrier',
+      calendarHint:
+        'Cliquez sur un jour libre pour le bloquer, sur un jour bloqué pour le libérer, ou sur un jour réservé pour voir la demande.',
+      rangeTitle: 'Bloquer une période',
+      from: 'Du',
+      to: 'Au',
+      note: 'Note (facultative)',
+      block: 'Bloquer',
+      unblock: 'Libérer',
+      rangeDone: (count) => (count <= 1 ? `${count} jour modifié.` : `${count} jours modifiés.`),
+      rangeSkipped: 'Les jours qui portent une demande ne sont jamais bloqués.',
+      refresh: 'Actualiser',
+      loadFailed: 'Impossible de charger les réservations.',
+    },
+    requests: {
+      pending: 'En attente de réponse',
+      upcoming: 'Confirmées',
+      history: 'Historique',
+      none: 'Rien pour le moment.',
+      received: (date) => `Reçue le ${date}`,
+      expires: (when) => `L’option expire ${when}`,
+      fields: {
+        phone: 'Téléphone',
+        email: 'E-mail',
+        venue: 'Lieu',
+        type: 'Type',
+        language: 'Langue',
+      },
+      languages: { en: 'Anglais', fr: 'Français' },
+      actions: { confirmed: 'Accepter', declined: 'Refuser', cancelled: 'Annuler la réservation' },
+      prompts: {
+        confirmed: `Accepter cette réservation${nbsp}? La personne reçoit un e-mail de confirmation.`,
+        declined: `Refuser cette demande${nbsp}? La personne reçoit un e-mail et la date redevient libre.`,
+        cancelled: `Annuler cette réservation${nbsp}? La date redevient libre${nbsp}; aucun e-mail n’est envoyé.`,
+      },
+      yes: 'Oui, confirmer',
+      no: 'Pas maintenant',
+      statuses: {
+        pending: 'Option en cours',
+        confirmed: 'Confirmée',
+        declined: 'Refusée',
+        expired: 'Expirée',
+        cancelled: 'Annulée',
+      },
+      errors: {
+        not_authorized: 'Votre session a expiré. Reconnectez-vous.',
+        invalid_transition:
+          'Cette demande a déjà été traitée. Actualisez pour voir où elle en est.',
+        not_found: 'Cette demande n’existe plus.',
+        unknown: 'Une erreur est survenue. Réessayez.',
+      },
+    },
   },
 };
 

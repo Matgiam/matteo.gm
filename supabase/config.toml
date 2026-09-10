@@ -1,0 +1,17 @@
+# Only what this project relies on; everything else keeps the Supabase defaults.
+project_id = "matteo-gm"
+
+# All three functions check access themselves, so the gateway's JWT check is off:
+# the publishable key used by visitors is not a JWT.
+
+[functions.booking-request]
+# Called by visitors from the booking form (anti-abuse limits live in the database).
+verify_jwt = false
+
+[functions.booking-decide]
+# Called by the logged-in admin; the database refuses anyone who is not in public.admins.
+verify_jwt = false
+
+[functions.booking-cron]
+# Called hourly by Supabase Cron with the CRON_SECRET header.
+verify_jwt = false
