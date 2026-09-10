@@ -1,13 +1,11 @@
 // Run every hour by Supabase Cron, with the header x-cron-secret: <CRON_SECRET>.
 // Frees holds nobody answered within 7 days, and reminds the admin 48 hours before.
 import { createClient } from 'npm:@supabase/supabase-js@2';
-import { env, json, preflight, serviceRoleKey } from '../_shared/http.ts';
+import { env, json, serve, serviceRoleKey } from '../_shared/http.ts';
 import { sendEmails } from '../_shared/email.ts';
 import { adminExpired, adminReminder, type BookingRow } from '../_shared/templates.ts';
 
-Deno.serve(async (req) => {
-  const early = preflight(req);
-  if (early) return early;
+serve(async (req) => {
   if (req.headers.get('x-cron-secret') !== env('CRON_SECRET')) {
     return json({ error: 'not_authorized' }, 401);
   }

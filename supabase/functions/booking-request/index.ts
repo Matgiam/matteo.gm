@@ -1,14 +1,7 @@
 // A visitor asks for an evening. The database decides whether the date can be held
 // (one booking per day, anti-abuse limits); this function then sends the emails.
 import { createClient } from 'npm:@supabase/supabase-js@2';
-import {
-  dbErrorCode,
-  env,
-  inBackground,
-  json,
-  preflight,
-  serviceRoleKey,
-} from '../_shared/http.ts';
+import { dbErrorCode, env, inBackground, json, serve, serviceRoleKey } from '../_shared/http.ts';
 import { sendEmails } from '../_shared/email.ts';
 import { adminNewRequest, visitorEmail, type BookingRow } from '../_shared/templates.ts';
 
@@ -28,9 +21,7 @@ async function hashIp(req: Request): Promise<string | null> {
   return Array.from(new Uint8Array(digest), (b) => b.toString(16).padStart(2, '0')).join('');
 }
 
-Deno.serve(async (req) => {
-  const early = preflight(req);
-  if (early) return early;
+serve(async (req) => {
   if (req.method !== 'POST') return json({ error: 'method_not_allowed' }, 405);
 
   let body: Record<string, unknown>;
@@ -46,6 +37,7 @@ Deno.serve(async (req) => {
   const day = text(body.day, 10);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(day)) return json({ error: 'invalid_day' }, 400);
 
+  // Read before touching the database, so a missing secret never leaves a silent hold behind.
   const siteUrl = env('SITE_URL').replace(/\/$/, '');
   const adminEmail = env('ADMIN_EMAIL');
   const supabase = createClient(env('SUPABASE_URL'), serviceRoleKey(), {

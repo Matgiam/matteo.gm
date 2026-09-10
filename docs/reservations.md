@@ -37,8 +37,8 @@ Supabase → **SQL Editor** → New query → colle tout le fichier
    insert into public.admins (user_id) select id from auth.users where email = 'ton@adresse';
    ```
 4. **Authentication → URL Configuration** :
-   - *Site URL* : l'adresse du site sur Vercel
-   - *Redirect URLs* : `https://<ton-site>/admin/confirm` et `http://localhost:5173/admin/confirm`
+   - *Site URL* : `https://matteo-gm.vercel.app`
+   - *Redirect URLs* : `https://matteo-gm.vercel.app/admin/confirm` et `http://localhost:5173/admin/confirm`
 5. **Authentication → Emails → Magic Link** : remplace le lien du modèle par
    ```html
    <a href="{{ .RedirectTo }}?token_hash={{ .TokenHash }}&type=email">Se connecter</a>
@@ -57,29 +57,12 @@ Supabase → **SQL Editor** → New query → colle tout le fichier
 
 Le formulaire « Envoyer un message » continue d'utiliser ton template actuel.
 
-## 4. Edge Functions
+## 4. Edge Functions (les secrets d'abord, puis le déploiement)
 
-Depuis le dossier du projet :
-
-```bash
-npx supabase login
-```
-
-```bash
-npx supabase link --project-ref hyrkkjbzvcdlnbpsowev
-```
-
-```bash
-npx supabase functions deploy
-```
-
-Cela déploie les trois fonctions (`booking-request`, `booking-decide`, `booking-cron`) avec
-les réglages de `supabase/config.toml`.
-
-Crée ensuite le fichier `supabase/.env` (ignoré par git) :
+Crée le fichier `supabase/.env` (ignoré par git) :
 
 ```
-SITE_URL=https://ton-site.vercel.app
+SITE_URL=https://matteo-gm.vercel.app
 ADMIN_EMAIL=ton@adresse
 EMAILJS_SERVICE_ID=
 EMAILJS_TEMPLATE_ID=
@@ -89,20 +72,34 @@ CRON_SECRET=
 IP_HASH_SALT=
 ```
 
-Pour `CRON_SECRET` et `IP_HASH_SALT`, deux chaînes aléatoires différentes :
+`EMAILJS_TEMPLATE_ID` est l'ID du template « Réservations » de l'étape 3. Pour `CRON_SECRET`
+et `IP_HASH_SALT`, deux chaînes aléatoires différentes :
 
 ```bash
 node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 ```
 
-Puis :
+Ensuite, depuis le dossier du projet, trois commandes. La première ouvre ton navigateur pour
+te connecter à Supabase.
 
 ```bash
-npx supabase secrets set --env-file supabase/.env
+npx supabase login
 ```
 
-Si une fonction répond *Missing secret SUPABASE_SERVICE_ROLE_KEY*, ajoute
-`SERVICE_ROLE_KEY=` avec ta clé secrète (*Project Settings → API Keys*) et relance la commande.
+```bash
+npx supabase secrets set --env-file supabase/.env --project-ref hyrkkjbzvcdlnbpsowev
+```
+
+```bash
+npx supabase functions deploy --project-ref hyrkkjbzvcdlnbpsowev --use-api
+```
+
+La dernière déploie les trois fonctions (`booking-request`, `booking-decide`, `booking-cron`)
+avec les réglages de `supabase/config.toml`. `--use-api` évite d'avoir besoin de Docker.
+
+Si une fonction répond *Missing secret SUPABASE_SERVICE_ROLE_KEY* dans ses logs, ajoute
+`SERVICE_ROLE_KEY=` avec ta clé secrète (*Project Settings → API Keys*) dans `supabase/.env`
+et relance la commande `secrets set`.
 
 ## 5. Rappels et expirations (toutes les heures)
 
@@ -125,9 +122,24 @@ La suppression RGPD après 12 mois est déjà programmée par la migration.
 
 ## 6. Vercel
 
-**Project Settings → Environment Variables** : ajoute `VITE_SUPABASE_URL` et
-`VITE_SUPABASE_PUBLISHABLE_KEY` (valeurs dans `.env.local`), puis redéploie.
+**Project Settings → Environment Variables**, cinq variables :
+
+- `VITE_SUPABASE_URL` et `VITE_SUPABASE_PUBLISHABLE_KEY` (valeurs dans `.env`)
+- `VITE_EMAILJS_PUBLIC_KEY`, `VITE_EMAILJS_SERVICE_ID` et `VITE_EMAILJS_TEMPLATE_ID`
+  (ton template actuel, celui du formulaire « Envoyer un message »)
+
+Puis redéploie : Vercel n'intègre les variables qu'au moment du build.
 `vercel.json` fait déjà fonctionner les liens directs comme `/admin` ou `/book`.
+
+## En cas de problème
+
+| Ce que tu vois | Cause | Solution |
+|---|---|---|
+| Console : *blocked by CORS policy* sur `functions/v1/booking-…` | La fonction n'est pas déployée : Supabase répond 404, ce que le navigateur présente comme une erreur CORS | Étape 4 |
+| « Une erreur est survenue » après l'envoi d'une date | Un secret manque ou une valeur est fausse | Supabase → **Edge Functions → booking-request → Logs** : le message dit lequel (*Missing secret …*) |
+| « Le calendrier est momentanément inaccessible » | SQL pas appliqué, ou variables `VITE_SUPABASE_*` absentes du build | Étape 1, ou étape 6 puis redéploiement |
+| « Les clés EmailJS ne sont pas encore configurées » sur « Envoyer un message » | Une des trois variables `VITE_EMAILJS_*` manque sur Vercel | Étape 6 puis redéploiement |
+| Le mail de connexion n'arrive pas | Adresse différente de ton compte Supabase, ou limite d'envoi de Supabase atteinte | Étape 2, puis patiente quelques minutes |
 
 ## Tester en local
 

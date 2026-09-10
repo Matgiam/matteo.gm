@@ -263,7 +263,8 @@ function createMock() {
   };
 }
 
-const mockEnabled = import.meta.env.DEV && import.meta.env.VITE_BOOKING_MOCK === 'true';
+// `npm run dev:mock` starts Vite in "mock" mode; a production build never is.
+const mockEnabled = import.meta.env.DEV && import.meta.env.MODE === 'mock';
 
 /** Null when there is no backend: the booking page then offers only "send a message". */
 export const bookingApi = mockEnabled ? createMock() : isSupabaseConfigured ? real : null;
