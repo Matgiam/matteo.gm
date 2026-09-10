@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useI18n } from '../i18n/context';
 
 /**
  * A user-fillable image placeholder, the React replacement for the old
@@ -15,14 +16,17 @@ const STORAGE_PREFIX = 'matteo.gm:image-slot:';
 const MAX_EDGE = 1600;
 const QUALITY = 0.82;
 
-/** Downscale to a sane size so a 12 MP phone photo doesn't blow the storage quota. */
+/**
+ * Downscale to a sane size so a 12 MP phone photo doesn't blow the storage quota.
+ * Rejects with an error code ('read' or 'decode') that the slot translates.
+ */
 function fileToDataUrl(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
-    reader.onerror = () => reject(new Error('Could not read that file.'));
+    reader.onerror = () => reject(new Error('read'));
     reader.onload = () => {
       const img = new Image();
-      img.onerror = () => reject(new Error('That file is not an image we can read.'));
+      img.onerror = () => reject(new Error('decode'));
       img.onload = () => {
         const scale = Math.min(1, MAX_EDGE / Math.max(img.width, img.height));
         if (scale === 1 && file.size < 400_000) {
@@ -43,7 +47,7 @@ function fileToDataUrl(file) {
 
 export default function ImageSlot({
   id,
-  placeholder = 'Drop an image',
+  placeholder: placeholderProp,
   src = '',
   alt = '',
   shape = 'rounded',
@@ -51,9 +55,14 @@ export default function ImageSlot({
   fit = 'cover',
   className = '',
 }) {
+  const { t } = useI18n();
+  const copy = t.imageSlot;
+  const placeholder = placeholderProp ?? copy.placeholder;
+
   const [stored, setStored] = useState('');
   const [isOver, setIsOver] = useState(false);
-  const [error, setError] = useState('');
+  // An error code rather than a sentence, so the message follows a language switch.
+  const [error, setError] = useState(null);
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -67,20 +76,20 @@ export default function ImageSlot({
   const accept = useCallback(
     async (file) => {
       if (!file || !file.type.startsWith('image/')) {
-        setError('That doesn’t look like an image.');
+        setError('type');
         return;
       }
       try {
         const dataUrl = await fileToDataUrl(file);
         setStored(dataUrl);
-        setError('');
+        setError(null);
         try {
           window.localStorage.setItem(STORAGE_PREFIX + id, dataUrl);
         } catch {
-          setError('Shown, but too large to remember after a reload.');
+          setError('quota');
         }
       } catch (err) {
-        setError(err.message);
+        setError(err.message === 'decode' ? 'decode' : 'read');
       }
     },
     [id],
@@ -88,7 +97,7 @@ export default function ImageSlot({
 
   const clear = () => {
     setStored('');
-    setError('');
+    setError(null);
     try {
       window.localStorage.removeItem(STORAGE_PREFIX + id);
     } catch {
@@ -129,20 +138,20 @@ export default function ImageSlot({
         type="button"
         className="slot__pick"
         onClick={() => inputRef.current?.click()}
-        aria-label={`${placeholder}. Click or drop an image here`}
+        aria-label={`${placeholder}. ${copy.hint}`}
       >
         {!shown && (
           <span className="slot__empty">
             <span className="slot__icon" aria-hidden="true">
               +
             </span>
-            {error || placeholder}
+            {error ? copy.errors[error] : placeholder}
           </span>
         )}
       </button>
 
       {stored && (
-        <button type="button" className="slot__clear" title="Remove image" onClick={clear}>
+        <button type="button" className="slot__clear" title={copy.remove} onClick={clear}>
           ×
         </button>
       )}

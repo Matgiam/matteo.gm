@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import LanguageToggle from './LanguageToggle';
+import { useI18n } from '../i18n/context';
 import { navLinks } from '../data/site';
 
 export default function Nav() {
+  const { t } = useI18n();
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
   const toggleRef = useRef(null);
@@ -41,18 +44,20 @@ export default function Nav() {
           </NavLink>
 
           <div className="nav__links">
-            {navLinks.map(({ to, label }) => (
+            {navLinks.map(({ to, id }) => (
               <NavLink
                 key={to}
                 to={to}
                 end={to === '/'}
                 className={({ isActive }) => `nav__link${isActive ? ' is-active' : ''}`}
               >
-                {label}
+                {t.nav[id]}
               </NavLink>
             ))}
+            {/* Hidden at the hamburger breakpoint; the panel carries its own copy. */}
+            <LanguageToggle className="nav__lang" />
             <NavLink to="/book" className="btn btn--sm">
-              Book me
+              {t.nav.cta}
             </NavLink>
           </div>
 
@@ -62,7 +67,7 @@ export default function Nav() {
             className={`nav__toggle${open ? ' is-open' : ''}`}
             aria-expanded={open}
             aria-controls="nav-menu"
-            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-label={open ? t.nav.closeMenu : t.nav.openMenu}
             onClick={() => setOpen((v) => !v)}
           >
             <span className="nav__bars" aria-hidden="true">
@@ -76,16 +81,20 @@ export default function Nav() {
         {/* Kept mounted so it can transition; `visibility` takes it out of the tab order when closed. */}
         <div id="nav-menu" className={`nav__menu${open ? ' is-open' : ''}`}>
           <div className="shell nav__menu-inner">
-            {navLinks.map(({ to, label }) => (
+            {navLinks.map(({ to, id }) => (
               <NavLink
                 key={to}
                 to={to}
                 end={to === '/'}
                 className={({ isActive }) => `nav__menu-link${isActive ? ' is-active' : ''}`}
               >
-                {label}
+                {t.nav[id]}
               </NavLink>
             ))}
+            <div className="nav__menu-lang">
+              <span className="eyebrow">{t.language.label}</span>
+              <LanguageToggle />
+            </div>
           </div>
         </div>
       </nav>

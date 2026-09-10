@@ -2,26 +2,29 @@ import { Link } from 'react-router-dom';
 import ImageSlot from '../components/ImageSlot';
 import SpotifyEmbed from '../components/SpotifyEmbed';
 import { usePageAnimation } from '../hooks/usePageAnimation';
+import { useI18n } from '../i18n/context';
 import { spotify } from '../config';
 import { upcomingReleases } from '../data/site';
 
 export default function Music() {
   const scope = usePageAnimation();
+  const { t } = useI18n();
+  const copy = t.music;
 
   return (
     <main ref={scope} className="shell page">
       <div className="eyebrow" style={{ marginBottom: 24 }}>
-        Music
+        {copy.eyebrow}
       </div>
       <h1 className="display display--page" style={{ marginBottom: 64 }}>
-        The <em className="accent">music</em>.
+        {copy.title}
       </h1>
 
       <section className="panel split split--media">
         <img
           data-anim="settle"
           src="/assets/away-artwork.png"
-          alt="Away, artwork"
+          alt={copy.artworkAlt}
           style={{
             width: '100%',
             display: 'block',
@@ -32,7 +35,7 @@ export default function Music() {
 
         <div>
           <div className="eyebrow" style={{ marginBottom: 14 }}>
-            Single · 2026
+            {copy.single}
           </div>
           <h2
             className="display"
@@ -41,18 +44,17 @@ export default function Music() {
             Away
           </h2>
           <p style={{ color: 'var(--muted)', margin: '0 0 26px', maxWidth: '46ch', fontSize: 19 }}>
-            One take, late evening. The first page of a longer story, quiet piano for the end of
-            the day.
+            {copy.body}
           </p>
 
           <SpotifyEmbed style={{ marginBottom: 24 }} />
 
           <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
             <a href={spotify.trackUrl} target="_blank" rel="noreferrer" className="btn-dark">
-              Spotify ↗
+              {copy.spotify}
             </a>
             <a href={spotify.youtubeUrl} className="btn-outline">
-              YouTube ↗
+              {copy.youtube}
             </a>
           </div>
         </div>
@@ -72,21 +74,23 @@ export default function Music() {
           }}
         >
           <h3 className="serif" style={{ fontSize: 36, margin: 0 }}>
-            Coming next
+            {copy.upcomingTitle}
           </h3>
-          <span className="note">two pieces on their way to streaming</span>
+          <span className="note">{copy.upcomingNote}</span>
         </div>
 
         <div className="grid-2">
-          {upcomingReleases.map(({ id, title, meta, placeholder }) => (
+          {upcomingReleases.map(({ id, title }) => (
             <div key={id}>
               <div style={{ aspectRatio: '1', borderRadius: 6, overflow: 'hidden' }}>
-                <ImageSlot id={id} shape="rect" placeholder={placeholder} />
+                <ImageSlot id={id} shape="rect" placeholder={copy.upcoming[id].placeholder} />
               </div>
               <h4 className="serif" style={{ fontSize: 28, margin: '18px 0 4px' }}>
                 {title}
               </h4>
-              <p style={{ margin: 0, color: 'var(--muted-2)', fontSize: 16.5 }}>{meta}</p>
+              <p style={{ margin: 0, color: 'var(--muted-2)', fontSize: 16.5 }}>
+                {copy.upcoming[id].meta}
+              </p>
             </div>
           ))}
         </div>
@@ -94,7 +98,7 @@ export default function Music() {
 
       <div style={{ textAlign: 'center', marginTop: 80 }}>
         <Link to="/book" className="btn btn--lg">
-          Like it? Book an evening
+          {copy.cta}
         </Link>
       </div>
     </main>

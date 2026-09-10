@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import { useI18n } from '../i18n/context';
 
 export default function Footer() {
+  const { t } = useI18n();
+
   return (
     <footer className="footer">
       <div className="shell footer__inner">
@@ -9,12 +12,12 @@ export default function Footer() {
         </Link>
 
         <div className="footer__links">
-          <Link to="/music">Music</Link>
-          <Link to="/concerts">Concerts</Link>
-          <Link to="/book">Book me</Link>
+          <Link to="/music">{t.footer.music}</Link>
+          <Link to="/concerts">{t.footer.concerts}</Link>
+          <Link to="/book">{t.footer.book}</Link>
         </div>
 
-        <div className="footer__legal">© 2026 Matteo.gm · Artwork: “Away”, pastel on paper</div>
+        <div className="footer__legal">{t.footer.legal}</div>
       </div>
     </footer>
   );

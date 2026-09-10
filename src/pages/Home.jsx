@@ -2,11 +2,13 @@ import { Link } from 'react-router-dom';
 import Marquee from '../components/Marquee';
 import SpotifyEmbed from '../components/SpotifyEmbed';
 import { usePageAnimation } from '../hooks/usePageAnimation';
+import { useI18n } from '../i18n/context';
 import { siteConfig } from '../config';
-import { bookingKinds } from '../data/site';
 
 export default function Home() {
   const scope = usePageAnimation();
+  const { t } = useI18n();
+  const { hero, about, release, booking } = t.home;
 
   return (
     <main ref={scope}>
@@ -14,21 +16,20 @@ export default function Home() {
       <section className="shell split split--hero" style={{ padding: '88px var(--gutter) 72px' }}>
         <div>
           <div className="eyebrow" style={{ marginBottom: 28 }}>
-            Pianist &amp; Composer
+            {hero.eyebrow}
           </div>
           <h1 className="display display--hero" style={{ marginBottom: 28 }}>
-            Music for the <em className="accent">quiet hours</em>.
+            {hero.title}
           </h1>
           <p className="lede" style={{ maxWidth: '44ch', marginBottom: 40 }}>
-            I’m Matteo. I write small, warm pieces for piano, music to slow down to, made in a room
-            by the sea.
+            {hero.lede}
           </p>
           <div style={{ display: 'flex', gap: 24, alignItems: 'center', flexWrap: 'wrap' }}>
             <Link to="/book" className="btn">
-              Book an evening
+              {hero.book}
             </Link>
             <Link to="/music" className="link-u">
-              Listen to “Away” →
+              {hero.listen}
             </Link>
           </div>
         </div>
@@ -38,7 +39,7 @@ export default function Home() {
             <img
               data-anim="settle"
               src="/assets/away-artwork.png"
-              alt="Away, single artwork"
+              alt={hero.artworkAlt}
               style={{
                 width: '100%',
                 display: 'block',
@@ -46,7 +47,7 @@ export default function Home() {
                 boxShadow: 'var(--shadow-lg)',
               }}
             />
-            <figcaption className="caption">“Away” · single artwork · pastel on paper</figcaption>
+            <figcaption className="caption">{hero.caption}</figcaption>
           </figure>
         </div>
       </section>
@@ -59,7 +60,7 @@ export default function Home() {
         style={{ padding: '96px var(--gutter) 24px', textAlign: 'center' }}
       >
         <div className="eyebrow" style={{ marginBottom: 36 }}>
-          About me
+          {about.eyebrow}
         </div>
         <img
           src="/assets/matteo-portrait.jpg"
@@ -82,12 +83,10 @@ export default function Home() {
           Matteo<span className="accent">.</span>gm
         </h2>
         <p className="lede" style={{ maxWidth: '55vh', margin: '28px auto 32px' }}>
-          Passionate about music since my first memories, I write and play calm pieces for
-          piano, alone with the purpose of creating intimate, reflective moments. I also compose original music for videogames and other
-          media.
+          {about.body}
         </p>
         <Link to="/about" className="link-u">
-          My story →
+          {about.link}
         </Link>
       </section>
 
@@ -95,7 +94,7 @@ export default function Home() {
       <section className="shell split split--flip" style={{ padding: '96px var(--gutter)' }}>
         <div>
           <div className="eyebrow" style={{ marginBottom: 20 }}>
-            Latest release
+            {release.eyebrow}
           </div>
           <h2
             className="display"
@@ -104,11 +103,10 @@ export default function Home() {
             Away
           </h2>
           <p style={{ color: 'var(--muted)', maxWidth: '42ch', margin: '0 0 28px', fontSize: 19 }}>
-            Three minutes of dusk. A single take at the piano, recorded late, windows open. This is
-            what an evening with me sounds like.
+            {release.body}
           </p>
           <Link to="/music" className="link-u">
-            All music →
+            {release.link}
           </Link>
         </div>
 
@@ -121,24 +119,22 @@ export default function Home() {
       <section className="band">
         <div className="shell" style={{ padding: '88px var(--gutter)', textAlign: 'center' }}>
           <div className="eyebrow" style={{ marginBottom: 20 }}>
-            Booking 2026–27 is open
+            {booking.eyebrow}
           </div>
           <h2
             className="display"
             style={{ fontSize: 'clamp(38px,5vw,64px)', margin: '0 0 44px', lineHeight: 1.05 }}
           >
-            Have a quiet space
-            <br />
-            and a piano?
+            {booking.title}
           </h2>
 
           <div
             className="grid-3"
             style={{ maxWidth: 980, margin: '0 auto 48px', textAlign: 'left' }}
           >
-            {bookingKinds.map(({ n, title, body }) => (
-              <div className="card" key={n}>
-                <div className="card__num">{n}</div>
+            {booking.kinds.map(({ title, body }, i) => (
+              <div className="card" key={i}>
+                <div className="card__num">{String(i + 1).padStart(2, '0')}</div>
                 <h3>{title}</h3>
                 <p>{body}</p>
               </div>
@@ -146,7 +142,7 @@ export default function Home() {
           </div>
 
           <Link to="/book" className="btn btn--xl">
-            Book an evening
+            {booking.cta}
           </Link>
         </div>
       </section>
@@ -159,40 +155,40 @@ export default function Home() {
         >
           <div>
             <div className="eyebrow" style={{ marginBottom: 18 }}>
-              Next concert
+              {t.home.teasers.concertEyebrow}
             </div>
             <p className="serif" style={{ fontSize: 27, lineHeight: 1.25, margin: '0 0 14px' }}>
-              12 Sept 2026 · Casa della Musica, Palermo
+              {t.home.teasers.concert}
             </p>
             <Link to="/concerts" className="link-u link-u--sm">
-              All dates →
+              {t.home.teasers.concertLink}
             </Link>
           </div>
 
           <div>
             <div className="eyebrow" style={{ marginBottom: 18 }}>
-              From the press
+              {t.home.teasers.pressEyebrow}
             </div>
             <p
               className="serif"
               style={{ fontStyle: 'italic', fontSize: 27, lineHeight: 1.25, margin: '0 0 14px' }}
             >
-              “Small rooms you want to stay in.”
+              {t.home.teasers.press}
             </p>
             <Link to="/press" className="link-u link-u--sm">
-              Press →
+              {t.home.teasers.pressLink}
             </Link>
           </div>
 
           <div>
             <div className="eyebrow" style={{ marginBottom: 18 }}>
-              About
+              {t.home.teasers.aboutEyebrow}
             </div>
             <p className="serif" style={{ fontSize: 27, lineHeight: 1.25, margin: '0 0 14px' }}>
-              Evenings, sea air, and a piano that lives by the window.
+              {t.home.teasers.about}
             </p>
             <Link to="/about" className="link-u link-u--sm">
-              My story →
+              {t.home.teasers.aboutLink}
             </Link>
           </div>
         </div>

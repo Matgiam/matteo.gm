@@ -1,31 +1,33 @@
 import { Link } from 'react-router-dom';
 import { usePageAnimation } from '../hooks/usePageAnimation';
+import { useI18n } from '../i18n/context';
 import { contact } from '../config';
-import { pressQuotes } from '../data/site';
 
 export default function Press() {
   const scope = usePageAnimation();
+  const { t } = useI18n();
+  const copy = t.press;
 
   return (
     <main ref={scope} className="shell page">
       <div className="eyebrow" style={{ marginBottom: 24 }}>
-        Press
+        {copy.eyebrow}
       </div>
       <h1 className="display display--page" style={{ marginBottom: 72 }}>
-        Kind <em className="accent">words</em>.
+        {copy.title}
       </h1>
 
       <div className="quotes">
-        {pressQuotes.map(({ quote, source }) => (
-          <blockquote className="quote" key={source}>
-            <p>“{quote}”</p>
+        {copy.quotes.map(({ quote, source }, i) => (
+          <blockquote className="quote" key={i}>
+            <p>{t.common.quote(quote)}</p>
             <cite>{source}</cite>
           </blockquote>
         ))}
       </div>
 
       <p className="note" style={{ marginTop: 64 }}>
-        Placeholder quotes. Replace with real press as it arrives.
+        {copy.note}
       </p>
 
       <section
@@ -40,14 +42,14 @@ export default function Press() {
         }}
       >
         <div>
-          <strong style={{ fontWeight: 500 }}>Press photos</strong>
+          <strong style={{ fontWeight: 500 }}>{copy.photosTitle}</strong>
           <br />
           <Link to="/gallery" className="link-u link-u--sm">
-            Download from the gallery →
+            {copy.photosLink}
           </Link>
         </div>
         <div>
-          <strong style={{ fontWeight: 500 }}>Interviews &amp; requests</strong>
+          <strong style={{ fontWeight: 500 }}>{copy.requestsTitle}</strong>
           <br />
           <a href={`mailto:${contact.press}`} className="link-u link-u--sm">
             {contact.press} →

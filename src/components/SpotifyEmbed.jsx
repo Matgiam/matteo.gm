@@ -1,4 +1,5 @@
 import { spotify } from '../config';
+import { useI18n } from '../i18n/context';
 
 /**
  * Height is set in CSS, not via the `height` attribute: below ~480px the
@@ -6,9 +7,11 @@ import { spotify } from '../config';
  * more height and Spotify switches to its roomier stacked card.
  */
 export default function SpotifyEmbed({ className = '', style }) {
+  const { t } = useI18n();
+
   return (
     <iframe
-      title="Away on Spotify"
+      title={t.common.spotifyTitle}
       className={`spotify-embed ${className}`.trim()}
       src={`https://open.spotify.com/embed/track/${spotify.trackId}?utm_source=generator`}
       style={style}
