@@ -71,7 +71,7 @@ const en = {
         </>
       ),
       lede: 'I’m Matteo. I write small, warm pieces for piano, late at night in my room, for the feelings words can’t quite hold.',
-      book: 'Book an evening',
+      book: 'Book a date',
       listen: 'Listen to “Away” →',
       artworkAlt: 'Away, single artwork',
       caption: '“Away” · single artwork · pastel on paper',
@@ -83,7 +83,7 @@ const en = {
     },
     release: {
       eyebrow: 'Latest release',
-      body: 'Three minutes of dusk and quiet longing. A single take at the piano, recorded late in my room, windows open. This is what an evening with me feels like.',
+      body: 'Three minutes of dusk and quiet longing. A single take at the piano, recorded late in my room, windows open. This is what my music sounds like, at any hour.',
       link: 'All music →',
     },
     booking: {
@@ -109,7 +109,7 @@ const en = {
           body: 'Original calm music written to your picture and pace.',
         },
       ],
-      cta: 'Book an evening',
+      cta: 'Book a date',
     },
     // Used by the three-up teaser section, currently commented out in Home.jsx.
     teasers: {
@@ -120,7 +120,7 @@ const en = {
       press: '“Small rooms you want to stay in.”',
       pressLink: 'Press →',
       aboutEyebrow: 'About',
-      about: 'Late evenings, open windows, and a piano that lives in my room.',
+      about: 'Open windows, and a piano that lives in my room.',
       aboutLink: 'My story →',
     },
   },
@@ -134,7 +134,7 @@ const en = {
       </>
     ),
     paragraphs: [
-      'Everything I write starts with a feeling: a memory, a longing, a tenderness I can’t quite say out loud. Late in the evening, in my room, I sit down at the piano and let it find its shape.',
+      'Everything I write starts with a feeling: a memory, a longing, a tenderness I can’t quite say out loud. Late at night, in my room, I sit down at the piano and let it find its shape.',
       'I play piano and I compose small, calm pieces: solo piano,  or a soft layer of tape. I record at home, late, with the windows open, and I like when you can hear the room breathing in a take.',
       <>
         My first single, <em>“Away”</em>, came out in 2026. It’s three minutes of dusk and
@@ -149,7 +149,7 @@ const en = {
       'Records at home: one room, one piano, open windows',
       'Debut single “Away” out now on Spotify',
     ],
-    cta: 'Book an evening →',
+    cta: 'Book a date →',
   },
 
   music: {
@@ -161,7 +161,7 @@ const en = {
     ),
     artworkAlt: 'Away, artwork',
     single: 'Single · 2026',
-    body: 'One take, late evening, in my room. The first page of a longer story: quiet piano for the feelings that surface at the end of the day.',
+    body: 'One take, late at night, in my room. The first page of a longer story: quiet piano for the feelings that surface at the end of the day.',
     spotify: 'Spotify ↗',
     youtube: 'YouTube ↗',
     // SECRET — “Coming next” copy, hidden until Vespro / Cartoline are released.
@@ -177,7 +177,7 @@ const en = {
     //     placeholder: 'Drop the “Cartoline” cover art',
     //   },
     // },
-    cta: 'Like it? Book an evening',
+    cta: 'Like it? Book a date',
   },
 
   works: {
@@ -297,7 +297,7 @@ const en = {
     steps: [
       'Send the form: date, place, occasion',
       'I confirm availability & quote within 48 h',
-      'We plan the evening together',
+      'We plan the event together',
     ],
     fields: {
       name: 'Your name',
@@ -305,7 +305,7 @@ const en = {
       date: 'Date (or roughly)',
       venue: 'City & venue',
       type: 'Type of booking',
-      message: 'Tell me about the evening',
+      message: 'Tell me about the event',
     },
     placeholders: {
       name: 'Anna Rossi',
@@ -339,20 +339,20 @@ const en = {
     },
     phone: { label: 'Phone', placeholder: '+32 470 12 34 56' },
     dated: {
-      intro: 'Pick a free evening. It stays on hold for you for 7 days while we talk it through.',
+      intro: 'Pick a free date. It stays on hold for you for 7 days while we talk it through.',
       unreachable: 'The calendar can’t be reached right now. You can still send me a message.',
       switchToMessage: 'Send a message instead',
-      pickFirst: 'Choose an available evening in the calendar first.',
-      selected: (date) => `Evening of ${date}`,
-      submit: 'Request this evening',
+      pickFirst: 'Choose an available date in the calendar first.',
+      selected: (date) => `On ${date}`,
+      submit: 'Request this date',
       sending: 'Sending…',
       success: (date) =>
-        `Thank you. The evening of ${date} is now on hold for you for 7 days. You’ll receive an email, and I’ll call you soon to talk it through.`,
+        `Thank you. ${date} is now on hold for you for 7 days. You’ll receive an email, and I’ll call you soon to talk it through.`,
       another: 'Request another date',
     },
     bookingErrors: {
-      day_taken: 'Someone has just asked for this evening. Please choose another date.',
-      day_unavailable: 'This evening is no longer available. Please choose another date.',
+      day_taken: 'Someone has just asked for this date. Please choose another day.',
+      day_unavailable: 'This date is no longer available. Please choose another day.',
       invalid_day: 'This date can’t be booked. Please choose another one.',
       invalid_input: 'Please check your details: name, email and phone number.',
       rate_limited: 'Too many requests for now. Please try again later, or send me a message.',

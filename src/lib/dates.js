@@ -1,6 +1,6 @@
 /**
  * Calendar days as 'YYYY-MM-DD' strings in local time. A booking is for an
- * evening, not an instant, so no timezone conversion ever touches these.
+ * whole day, not an instant, so no timezone conversion ever touches these.
  * ISO strings also compare correctly as plain strings ('2026-09-12' < '2026-10-01').
  */
 

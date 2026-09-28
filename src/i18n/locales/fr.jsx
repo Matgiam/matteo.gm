@@ -16,7 +16,7 @@ const fr = {
   meta: {
     title: 'GIAM · Piano & composition',
     description:
-      'GIAM, piano et composition. Des pièces intimes et chargées d’émotion, écrites tard le soir dans le secret d’une chambre. Réservations 2026–27 ouvertes.',
+      'GIAM, piano et composition. Des pièces intimes et chargées d’émotion, écrites tard la nuit dans le secret d’une chambre. Réservations 2026–27 ouvertes.',
   },
 
   language: {
@@ -78,8 +78,8 @@ const fr = {
           Le piano des <Accent>heures lentes</Accent>.
         </>
       ),
-      lede: 'Je suis Matteo. J’écris au piano de brèves pièces empreintes de douceur. Elles naissent tard le soir, dans l’intimité de ma chambre, pour dire ce que les mots taisent.',
-      book: 'Réserver une soirée',
+      lede: 'Je suis Matteo. J’écris au piano de brèves pièces empreintes de douceur. Elles naissent tard la nuit, dans l’intimité de ma chambre, pour dire ce que les mots taisent.',
+      book: 'Réserver',
       listen: `Écouter ${quoted('Away')} →`,
       artworkAlt: `${quoted('Away')}, pochette du single`,
       caption: `${quoted('Away')} · pochette du single · pastel sur papier`,
@@ -91,7 +91,7 @@ const fr = {
     },
     release: {
       eyebrow: 'Dernière parution',
-      body: 'Trois minutes de crépuscule et de douce nostalgie. Une seule prise au piano, enregistrée tard dans ma chambre, les fenêtres ouvertes sur la nuit. C’est ainsi que résonne une soirée à mes côtés.',
+      body: 'Trois minutes de crépuscule et de douce nostalgie. Une seule prise au piano, enregistrée tard dans ma chambre, les fenêtres ouvertes sur la nuit. C’est ainsi que ma musique vous accompagne, à toute heure.',
       link: 'Découvrir ma musique →',
     },
     booking: {
@@ -117,7 +117,7 @@ const fr = {
           body: 'Une composition originale et apaisée, écrite au rythme de vos images.',
         },
       ],
-      cta: 'Réserver une soirée',
+      cta: 'Réserver',
     },
     teasers: {
       concertEyebrow: 'Prochain concert',
@@ -128,7 +128,7 @@ const fr = {
       pressLink: 'Presse →',
       aboutEyebrow: 'À propos',
       about:
-        'Des soirées qui s’étirent, les fenêtres ouvertes, et un piano qui vit dans ma chambre.',
+        'Des moments qui s’étirent, les fenêtres ouvertes, et un piano qui vit dans ma chambre.',
       aboutLink: 'Mon histoire →',
     },
   },
@@ -142,7 +142,7 @@ const fr = {
       </>
     ),
     paragraphs: [
-      `Tout ce que j’écris commence par une émotion${nbsp}: un souvenir, un manque, une tendresse qui ne trouve pas ses mots. Tard le soir, dans ma chambre, je m’installe au piano et je la laisse prendre forme.`,
+      `Tout ce que j’écris commence par une émotion${nbsp}: un souvenir, un manque, une tendresse qui ne trouve pas ses mots. Tard la nuit, dans ma chambre, je m’installe au piano et je la laisse prendre forme.`,
       `Je joue du piano et compose de courtes pièces, tout en retenue${nbsp}: le piano seul, ou le souffle discret d’une bande magnétique. J’enregistre chez moi, tard, les fenêtres ouvertes, et j’aime que l’on entende la chambre respirer dans chaque prise.`,
       <>
         Mon premier single, <em>{quoted('Away')}</em>, a vu le jour en 2026. Trois minutes de
@@ -156,7 +156,7 @@ const fr = {
       `Enregistre à domicile${nbsp}: une pièce, un piano, les fenêtres ouvertes`,
       `Premier single, ${quoted('Away')}, disponible sur Spotify`,
     ],
-    cta: 'Réserver une soirée →',
+    cta: 'Réserver une date →',
   },
 
   music: {
@@ -168,7 +168,7 @@ const fr = {
     ),
     artworkAlt: `${quoted('Away')}, illustration de la pochette`,
     single: 'Single · 2026',
-    body: `Une prise unique, tard le soir, dans ma chambre. La première page d’une histoire plus vaste${nbsp}: un piano feutré pour les émotions qui affleurent à la fin du jour.`,
+    body: `Une prise unique, tard la nuit, dans ma chambre. La première page d’une histoire plus vaste${nbsp}: un piano feutré pour les émotions qui affleurent à la fin du jour.`,
     spotify: 'Spotify ↗',
     youtube: 'YouTube ↗',
     // SECRET — copie « Prochainement », masquée jusqu’à la sortie de Vespro / Cartoline.
@@ -184,7 +184,7 @@ const fr = {
     //     placeholder: `Déposez ici la pochette de ${quoted('Cartoline')}`,
     //   },
     // },
-    cta: `Cette musique vous parle${nbsp}? Réservez une soirée`,
+    cta: `Cette musique vous parle${nbsp}? Réservez une date`,
   },
 
   works: {
@@ -303,7 +303,7 @@ const fr = {
     steps: [
       `Envoyez le formulaire${nbsp}: date, lieu, occasion`,
       `Je confirme mes disponibilités et vous adresse un devis sous 48${nbsp}h`,
-      'Nous imaginons la soirée ensemble',
+      'Nous imaginons l’événement ensemble',
     ],
     fields: {
       name: 'Votre nom',
@@ -311,7 +311,7 @@ const fr = {
       date: 'Date (même approximative)',
       venue: 'Ville & lieu',
       type: 'Type de prestation',
-      message: 'Parlez-moi de la soirée',
+      message: 'Parlez-moi de l’événement',
     },
     placeholders: {
       name: 'Camille Durand',
@@ -347,21 +347,21 @@ const fr = {
     phone: { label: 'Téléphone', placeholder: '+32 470 12 34 56' },
     dated: {
       intro:
-        'Choisissez une soirée libre. Elle reste posée en option pour vous pendant 7 jours, le temps d’en parler ensemble.',
+        'Choisissez une date libre. Elle reste posée en option pour vous pendant 7 jours, le temps d’en parler ensemble.',
       unreachable:
         'Le calendrier est momentanément inaccessible. Vous pouvez toujours m’envoyer un message.',
       switchToMessage: 'Envoyer un message à la place',
-      pickFirst: 'Choisissez d’abord une soirée disponible dans le calendrier.',
-      selected: (date) => `Soirée du ${date}`,
-      submit: 'Demander cette soirée',
+      pickFirst: 'Choisissez d’abord une date disponible dans le calendrier.',
+      selected: (date) => `Le ${date}`,
+      submit: 'Demander cette date',
       sending: 'Envoi en cours…',
       success: (date) =>
-        `Merci. La soirée du ${date} est désormais posée en option pour vous pendant 7 jours. Vous allez recevoir un e-mail, et je vous appelle très vite pour en parler.`,
+        `Merci. Le ${date} est désormais posé en option pour vous pendant 7 jours. Vous allez recevoir un e-mail, et je vous appelle très vite pour en parler.`,
       another: 'Demander une autre date',
     },
     bookingErrors: {
-      day_taken: 'Quelqu’un vient de demander cette soirée. Choisissez une autre date.',
-      day_unavailable: 'Cette soirée n’est plus disponible. Choisissez une autre date.',
+      day_taken: 'Quelqu’un vient de demander cette date. Choisissez un autre jour.',
+      day_unavailable: 'Cette date n’est plus disponible. Choisissez un autre jour.',
       invalid_day: 'Cette date ne peut pas être réservée. Choisissez-en une autre.',
       invalid_input: `Vérifiez vos coordonnées${nbsp}: nom, e-mail et téléphone.`,
       rate_limited:

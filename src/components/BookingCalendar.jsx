@@ -3,7 +3,7 @@ import { useI18n } from '../i18n/context';
 import { addMonths, fromIso, monthStart, monthWeeks, todayIso } from '../lib/dates';
 
 /**
- * A month of evenings. `statuses` maps 'YYYY-MM-DD' to a status; days not listed
+ * A month of days. `statuses` maps 'YYYY-MM-DD' to a status; days not listed
  * are free. Visitors can only pick free days; in admin mode every day in range
  * is clickable (to block, free, or open the booking on it).
  *

@@ -79,7 +79,7 @@ const visitorCopy = {
       subject: `Votre demande pour le ${date}`,
       lines: [
         `Bonjour ${b.name},`,
-        `Merci pour votre message. La soirée du ${date} est désormais posée en option pour vous, pendant 7 jours.`,
+        `Merci pour votre message. Le ${date} est désormais posé en option pour vous, pendant 7 jours.`,
         `Je vous appelle très vite au ${b.phone} pour en parler ensemble, puis je vous confirme la date.`,
         'À très bientôt,\nMatteo',
       ],
@@ -88,7 +88,7 @@ const visitorCopy = {
       subject: `C’est confirmé${nbsp}: ${date}`,
       lines: [
         `Bonjour ${b.name},`,
-        `Bonne nouvelle${nbsp}: la soirée du ${date} est confirmée. J’ai hâte de jouer pour vous.`,
+        `Bonne nouvelle${nbsp}: le ${date} est confirmé. J’ai hâte de jouer pour vous.`,
         'Je reviens vers vous pour les derniers détails.',
         'À très bientôt,\nMatteo',
       ],
@@ -98,7 +98,7 @@ const visitorCopy = {
       lines: [
         `Bonjour ${b.name},`,
         `Merci encore pour votre demande. Je ne pourrai malheureusement pas jouer le ${date}, et la date est de nouveau libre.`,
-        `Si une autre soirée vous convient, le calendrier reste ouvert${nbsp}: ${siteUrl}/book`,
+        `Si un autre jour vous convient, le calendrier reste ouvert${nbsp}: ${siteUrl}/book`,
         'Bien à vous,\nMatteo',
       ],
     }),
@@ -108,7 +108,7 @@ const visitorCopy = {
       subject: `Your request for ${date}`,
       lines: [
         `Hello ${b.name},`,
-        `Thank you for your message. The evening of ${date} is now on hold for you, for 7 days.`,
+        `Thank you for your message. ${date} is now on hold for you, for 7 days.`,
         `I’ll call you soon on ${b.phone} to talk it through, then confirm the date.`,
         'Speak soon,\nMatteo',
       ],
@@ -117,7 +117,7 @@ const visitorCopy = {
       subject: `Confirmed: ${date}`,
       lines: [
         `Hello ${b.name},`,
-        `Good news: the evening of ${date} is confirmed. I can’t wait to play for you.`,
+        `Good news: ${date} is confirmed. I can’t wait to play for you.`,
         'I’ll be in touch about the last details.',
         'Speak soon,\nMatteo',
       ],
@@ -127,7 +127,7 @@ const visitorCopy = {
       lines: [
         `Hello ${b.name},`,
         `Thank you again for your request. Unfortunately I won’t be able to play on ${date}, and the date is free again.`,
-        `If another evening works for you, the calendar is still open: ${siteUrl}/book`,
+        `If another day works for you, the calendar is still open: ${siteUrl}/book`,
         'All the best,\nMatteo',
       ],
     }),
