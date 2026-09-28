@@ -80,7 +80,7 @@ export default function Home() {
           className="display"
           style={{ fontSize: 'clamp(52px,8.5vw,120px)', lineHeight: 0.95, margin: '40px 0 0' }}
         >
-          Matteo<span className="accent">.</span>gm
+          GIAM
         </h2>
         <p className="lede" style={{ maxWidth: '55vh', margin: '28px auto 32px' }}>
           {about.body}

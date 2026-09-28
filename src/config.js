@@ -21,9 +21,9 @@ export const isEmailjsConfigured = Boolean(
 );
 
 export const contact = {
-  booking: 'booking@matteo.gm',
-  hello: 'hello@matteo.gm',
-  press: 'press@matteo.gm',
+  booking: 'booking@GIAM',
+  hello: 'hello@GIAM',
+  press: 'press@GIAM',
 };
 
 export const spotify = {

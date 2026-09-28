@@ -66,7 +66,7 @@ const button = (label: string, href: string, primary = true) =>
 function layout(inner: string): string {
   return `<!doctype html><html><body style="margin:0;padding:0;background:#fbf4e9;">
 <div style="max-width:560px;margin:0 auto;padding:36px 28px;font-family:Georgia,'Times New Roman',serif;color:#2a1b10;font-size:16px;line-height:1.6;">
-<div style="font-size:24px;margin-bottom:28px;">Matteo<span style="color:#d0500e;">.</span>gm</div>
+<div style="font-size:24px;margin-bottom:28px;">GIAM</div>
 ${inner}
 </div></body></html>`;
 }

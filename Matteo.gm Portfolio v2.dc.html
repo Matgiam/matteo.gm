@@ -45,7 +45,7 @@
   <!-- ══ NAV ══ -->
   <nav style="position:sticky;top:0;z-index:50;background:rgba(251,244,233,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(58,35,16,.16)">
     <div style="max-width:1240px;margin:0 auto;padding:12px clamp(20px,5vw,48px);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
-      <a onClick="{{ goHome }}" style="font-family:'Instrument Serif',serif;font-size:26px;color:#2A1B10;cursor:pointer;letter-spacing:.01em">Matteo<span style="color:#D0500E">.</span>gm</a>
+      <a onClick="{{ goHome }}" style="font-family:'Instrument Serif',serif;font-size:26px;color:#2A1B10;cursor:pointer;letter-spacing:.01em">GIAM</a>
       <div data-nav-links style="display:flex;gap:clamp(14px,2.4vw,28px);font-size:15.5px;letter-spacing:.02em;align-items:center;flex-wrap:wrap">
         <a onClick="{{ goHome }}" style="cursor:pointer;color:{{ nav.home }}" style-hover="color:#D0500E">Home</a>
         <a onClick="{{ goAbout }}" style="cursor:pointer;color:{{ nav.about }}" style-hover="color:#D0500E">About</a>
@@ -92,7 +92,7 @@
     <section style="max-width:1240px;margin:0 auto;padding:96px clamp(20px,5vw,48px) 24px;text-align:center">
       <div style="font-size:12.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#A6480F;margin-bottom:36px">About me</div>
       <img src="assets/matteo-portrait.jpg" alt="Matteo" style="width:min(430px,84vw);aspect-ratio:43/56;object-fit:cover;object-position:72% 18%;border-radius:999px 999px 18px 18px;display:block;margin:0 auto;box-shadow:0 40px 80px -28px rgba(90,40,10,.45)">
-      <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(52px,8.5vw,120px);line-height:.95;margin:40px 0 0;color:#2A1B10">Matteo<span style="color:#D0500E">.</span>gm</h2>
+      <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(52px,8.5vw,120px);line-height:.95;margin:40px 0 0;color:#2A1B10">GIAM</h2>
       <p style="font-size:clamp(18px,2.2vw,21px);color:#5C4633;max-width:52ch;margin:28px auto 32px;text-wrap:pretty">I grew up by the sea, where evenings end slowly. I write and play small, calm pieces for piano — in living rooms, courtyards and little halls — recorded at home, late, with the windows open.</p>
       <a onClick="{{ goAbout }}" style="cursor:pointer;font-size:17px;border-bottom:1px solid rgba(179,64,14,.4);padding-bottom:2px" style-hover="color:#7E2C08">My story →</a>
     </section>
@@ -205,6 +205,7 @@
         </div>
       </div>
     </section>
+    <!-- SECRET — “Coming next” masqué jusqu’à la sortie de Vespro / Cartoline.
     <section style="margin-top:88px">
       <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid rgba(58,35,16,.16);padding-top:36px;margin-bottom:40px;gap:16px;flex-wrap:wrap">
         <h3 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:36px;margin:0">Coming next</h3>
@@ -223,6 +224,7 @@
         </div>
       </div>
     </section>
+    -->
     <div style="text-align:center;margin-top:80px">
       <a onClick="{{ goBook }}" style="cursor:pointer;display:inline-block;background:#D0500E;color:#FBF4E9;padding:15px 40px;border-radius:999px;font-size:17px" style-hover="background:#A63C0F">Like it? Book an evening</a>
     </div>
@@ -239,12 +241,14 @@
       <div data-r="works" style="display:grid;grid-template-columns:64px 1.3fr 90px 1fr 90px 140px;gap:20px;padding:26px 0;border-bottom:1px solid rgba(58,35,16,.14);align-items:baseline" style-hover="background:rgba(208,80,14,.05)">
         <span style="color:#C09B7D;font-size:15px">01</span><span style="font-family:'Instrument Serif',serif;font-size:28px">Away</span><span data-col="year" style="color:#8A6F5C;font-size:16px">2026</span><span data-r="hide" style="color:#5C4633;font-size:16.5px">solo piano</span><span data-r="hide" style="color:#8A6F5C;font-size:16px">3′40″</span><span data-r="hide" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#A6480F">Single</span>
       </div>
+      <!-- SECRET — Masqué tant que la pièce n’est pas sortie :
       <div data-r="works" style="display:grid;grid-template-columns:64px 1.3fr 90px 1fr 90px 140px;gap:20px;padding:26px 0;border-bottom:1px solid rgba(58,35,16,.14);align-items:baseline" style-hover="background:rgba(208,80,14,.05)">
         <span style="color:#C09B7D;font-size:15px">02</span><span style="font-family:'Instrument Serif',serif;font-size:28px">Vespro</span><span data-col="year" style="color:#8A6F5C;font-size:16px">2026</span><span data-r="hide" style="color:#5C4633;font-size:16.5px">piano &amp; cello</span><span data-r="hide" style="color:#8A6F5C;font-size:16px">6′10″</span><span data-r="hide" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#A6480F">Chamber</span>
       </div>
       <div data-r="works" style="display:grid;grid-template-columns:64px 1.3fr 90px 1fr 90px 140px;gap:20px;padding:26px 0;border-bottom:1px solid rgba(58,35,16,.14);align-items:baseline" style-hover="background:rgba(208,80,14,.05)">
         <span style="color:#C09B7D;font-size:15px">03</span><span style="font-family:'Instrument Serif',serif;font-size:28px">Cartoline</span><span data-col="year" style="color:#8A6F5C;font-size:16px">2026</span><span data-r="hide" style="color:#5C4633;font-size:16.5px">five miniatures, solo piano</span><span data-r="hide" style="color:#8A6F5C;font-size:16px">12′</span><span data-r="hide" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#A6480F">Cycle</span>
       </div>
+      -->
       <div data-r="works" style="display:grid;grid-template-columns:64px 1.3fr 90px 1fr 90px 140px;gap:20px;padding:26px 0;border-bottom:1px solid rgba(58,35,16,.14);align-items:baseline" style-hover="background:rgba(208,80,14,.05)">
         <span style="color:#C09B7D;font-size:15px">04</span><span style="font-family:'Instrument Serif',serif;font-size:28px">Sea Glass</span><span data-col="year" style="color:#8A6F5C;font-size:16px">2025</span><span data-r="hide" style="color:#5C4633;font-size:16.5px">piano &amp; tape</span><span data-r="hide" style="color:#8A6F5C;font-size:16px">4′30″</span><span data-r="hide" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#A6480F">Ambient</span>
       </div>
@@ -280,7 +284,10 @@
       <div data-r="stack" data-anim="row" style="display:grid;grid-template-columns:150px 1fr 1fr 140px;gap:clamp(12px,2vw,24px);padding:32px 0;border-bottom:1px solid rgba(58,35,16,.14);align-items:center">
         <div><div style="font-family:'Instrument Serif',serif;font-size:42px;line-height:1">24</div><div style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#A6480F">Oct 2026</div></div>
         <div><div style="font-family:'Instrument Serif',serif;font-size:26px">Salle des Saisons</div><div style="color:#8A6F5C;font-size:16px">Paris, France</div></div>
+        <!-- SECRET — Masqué tant que la pièce n’est pas sortie :
         <div style="color:#5C4633;font-size:17px;font-style:italic">With cello — “Vespro” premiere</div>
+        -->
+        <div style="color:#5C4633;font-size:17px;font-style:italic">With cello — a brand-new piece, first performance</div>
         <a href="#" style="justify-self:start;border:1px solid rgba(58,35,16,.3);color:#2A1B10;padding:10px 22px;border-radius:999px;font-size:15px" style-hover="border-color:#D0500E;color:#D0500E">Tickets ↗</a>
       </div>
     </div>
@@ -332,7 +339,7 @@
         <cite style="font-style:normal;font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:#A6480F">The Quiet Review · 2026</cite>
       </blockquote>
       <blockquote style="margin:0">
-        <p style="font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(30px,3.2vw,44px);line-height:1.25;margin:0 0 18px">“Matteo.gm writes small rooms you want to stay in.”</p>
+        <p style="font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(30px,3.2vw,44px);line-height:1.25;margin:0 0 18px">“GIAM writes small rooms you want to stay in.”</p>
         <cite style="font-style:normal;font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:#A6480F">Neue Klaviermusik · 2026</cite>
       </blockquote>
       <blockquote style="margin:0">
@@ -343,7 +350,7 @@
     <p style="font-style:italic;color:#8A6F5C;font-size:16px;margin-top:64px">Placeholder quotes — replace with real press as it arrives.</p>
     <section style="margin-top:56px;border-top:1px solid rgba(58,35,16,.16);padding-top:40px;display:flex;gap:clamp(28px,5vw,56px);font-size:17px;flex-wrap:wrap">
       <div><strong style="font-weight:500">Press photos</strong><br><a onClick="{{ goGallery }}" style="cursor:pointer;border-bottom:1px solid rgba(179,64,14,.4)">Download from the gallery →</a></div>
-      <div><strong style="font-weight:500">Interviews &amp; requests</strong><br><a onClick="{{ goBook }}" style="cursor:pointer;border-bottom:1px solid rgba(179,64,14,.4)">press@matteo.gm →</a></div>
+      <div><strong style="font-weight:500">Interviews &amp; requests</strong><br><a onClick="{{ goBook }}" style="cursor:pointer;border-bottom:1px solid rgba(179,64,14,.4)">press@GIAM →</a></div>
     </section>
   </main>
   </sc-if>
@@ -362,9 +369,9 @@
         <div style="display:flex;gap:14px;align-items:baseline"><span style="color:#D0500E;font-family:'Instrument Serif',serif">3.</span><span>We plan the evening together</span></div>
       </div>
       <div style="margin-top:40px;border-top:1px solid rgba(58,35,16,.16);padding-top:26px;font-size:16.5px;color:#8A6F5C;display:grid;gap:10px">
-        <div>Booking — <a href="mailto:booking@matteo.gm" style="border-bottom:1px solid rgba(179,64,14,.4)">booking@matteo.gm</a></div>
-        <div>Commissions — <a href="mailto:hello@matteo.gm" style="border-bottom:1px solid rgba(179,64,14,.4)">hello@matteo.gm</a></div>
-        <div>Press — <a href="mailto:press@matteo.gm" style="border-bottom:1px solid rgba(179,64,14,.4)">press@matteo.gm</a></div>
+        <div>Booking — <a href="mailto:booking@GIAM" style="border-bottom:1px solid rgba(179,64,14,.4)">booking@GIAM</a></div>
+        <div>Commissions — <a href="mailto:hello@GIAM" style="border-bottom:1px solid rgba(179,64,14,.4)">hello@GIAM</a></div>
+        <div>Press — <a href="mailto:press@GIAM" style="border-bottom:1px solid rgba(179,64,14,.4)">press@GIAM</a></div>
       </div>
     </div>
     <form onSubmit="{{ sendBooking }}" style="background:#F3E7D3;border:1px solid rgba(58,35,16,.14);border-radius:22px;padding:clamp(26px,4vw,48px);display:grid;gap:22px">
@@ -406,13 +413,13 @@
   <!-- ══ FOOTER ══ -->
   <footer style="border-top:1px solid rgba(58,35,16,.16);background:#F3E7D3">
     <div style="max-width:1240px;margin:0 auto;padding:44px clamp(20px,5vw,48px);display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap">
-      <a onClick="{{ goHome }}" style="font-family:'Instrument Serif',serif;font-size:22px;color:#2A1B10;cursor:pointer">Matteo<span style="color:#D0500E">.</span>gm</a>
+      <a onClick="{{ goHome }}" style="font-family:'Instrument Serif',serif;font-size:22px;color:#2A1B10;cursor:pointer">GIAM</a>
       <div style="display:flex;gap:24px;font-size:15px;color:#8A6F5C;flex-wrap:wrap">
         <a onClick="{{ goListen }}" style="cursor:pointer;color:#8A6F5C" style-hover="color:#D0500E">Listen</a>
         <a onClick="{{ goConcerts }}" style="cursor:pointer;color:#8A6F5C" style-hover="color:#D0500E">Concerts</a>
         <a onClick="{{ goBook }}" style="cursor:pointer;color:#8A6F5C" style-hover="color:#D0500E">Book me</a>
       </div>
-      <div style="font-size:14.5px;color:#8A6F5C;font-style:italic">© 2026 Matteo.gm · Artwork: “Away”, pastel on paper</div>
+      <div style="font-size:14.5px;color:#8A6F5C;font-style:italic">© 2026 GIAM · Artwork: “Away”, pastel on paper</div>
     </div>
   </footer>
 </div>
@@ -481,13 +488,13 @@ class Component extends DCLogic {
       venue: v('bk-venue'), booking_type: v('bk-type'), message: v('bk-message'),
     };
     if (cfg.publicKey === 'YOUR_PUBLIC_KEY') {
-      this.setState({ status: 'error', errMsg: 'EmailJS keys not set yet — add them in Tweaks, or email booking@matteo.gm directly.' });
+      this.setState({ status: 'error', errMsg: 'EmailJS keys not set yet — add them in Tweaks, or email booking@GIAM directly.' });
       return;
     }
     this.setState({ status: 'sending' });
     window.emailjs.send(cfg.serviceId, cfg.templateId, params, { publicKey: cfg.publicKey })
       .then(() => this.setState({ status: 'sent' }))
-      .catch((err) => this.setState({ status: 'error', errMsg: 'Something went wrong (' + (err && err.text || 'network') + '). Try again or email booking@matteo.gm.' }));
+      .catch((err) => this.setState({ status: 'error', errMsg: 'Something went wrong (' + (err && err.text || 'network') + '). Try again or email booking@GIAM.' }));
   };
   renderVals() {
     const p = this.state.page, s = this.state.status;

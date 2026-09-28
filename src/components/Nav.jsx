@@ -40,7 +40,7 @@ export default function Nav() {
       <nav className={`nav${open ? ' is-open' : ''}`}>
         <div className="shell nav__inner">
           <NavLink to="/" className="wordmark">
-            Matteo<span className="accent">.</span>gm
+            GIAM
           </NavLink>
 
           <div className="nav__links">

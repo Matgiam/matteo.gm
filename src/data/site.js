@@ -18,15 +18,18 @@ export const navLinks = [
 /** Stable values for the booking form's select; labels come from `t.book.types`. */
 export const bookingTypes = ['house', 'venue', 'film', 'other'];
 
+/* SECRET — non released, keep hidden until the titles go public.
+   Uncomment these two lines (and the “Coming next” block in
+   src/pages/Music.jsx + the matching copy in src/i18n/locales/) to publish. */
 export const upcomingReleases = [
-  { id: 'cover-vespro', title: 'Vespro' },
-  { id: 'cover-cartoline', title: 'Cartoline' },
+  // { id: 'cover-vespro', title: 'Vespro' },
+  // { id: 'cover-cartoline', title: 'Cartoline' },
 ];
 
 export const works = [
   { id: 'away', n: '01', title: 'Away', year: '2026', length: '3′40″' },
-  { id: 'vespro', n: '02', title: 'Vespro', year: '2026', length: '6′10″' },
-  { id: 'cartoline', n: '03', title: 'Cartoline', year: '2026', length: '12′' },
+  // SECRET — { id: 'vespro', n: '02', title: 'Vespro', year: '2026', length: '6′10″' },
+  // SECRET — { id: 'cartoline', n: '03', title: 'Cartoline', year: '2026', length: '12′' },
   { id: 'sea-glass', n: '04', title: 'Sea Glass', year: '2025', length: '4′30″' },
   { id: 'sull-acqua', n: '05', title: "Sull'acqua", year: '2024', length: '9′' },
   { id: 'prima-luce', n: '06', title: 'Prima luce', year: '2024', length: '5′' },

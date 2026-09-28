@@ -92,7 +92,7 @@ export default function Admin() {
       <header className="admin__bar">
         <div className="shell admin__bar-inner">
           <Link to="/" className="wordmark wordmark--sm" title={copy.backToSite}>
-            Matteo<span className="accent">.</span>gm
+            GIAM
           </Link>
           <div className="admin__bar-actions">
             <LanguageToggle />

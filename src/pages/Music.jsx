@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
-import ImageSlot from '../components/ImageSlot';
+// SECRET — needed again with the “Coming next” block below:
+// import ImageSlot from '../components/ImageSlot';
 import SpotifyEmbed from '../components/SpotifyEmbed';
 import { usePageAnimation } from '../hooks/usePageAnimation';
 import { useI18n } from '../i18n/context';
 import { spotify } from '../config';
-import { upcomingReleases } from '../data/site';
+// SECRET — needed again with the “Coming next” block below:
+// import { upcomingReleases } from '../data/site';
 
 export default function Music() {
   const scope = usePageAnimation();
@@ -60,7 +62,10 @@ export default function Music() {
         </div>
       </section>
 
-      <section style={{ marginTop: 88 }}>
+      {/* SECRET — “Coming next” hidden until Vespro / Cartoline are released.
+          Uncomment this block, the import above, and the copy in
+          src/i18n/locales/{en,fr}.jsx to publish. */}
+      {/* <section style={{ marginTop: 88 }}>
         <div
           style={{
             display: 'flex',
@@ -94,7 +99,7 @@ export default function Music() {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
 
       <div style={{ textAlign: 'center', marginTop: 80 }}>
         <Link to="/book" className="btn btn--lg">

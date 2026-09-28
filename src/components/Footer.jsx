@@ -8,7 +8,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="shell footer__inner">
         <Link to="/" className="wordmark wordmark--sm">
-          Matteo<span className="accent">.</span>gm
+          GIAM
         </Link>
 
         <div className="footer__links">

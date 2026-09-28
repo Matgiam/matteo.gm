@@ -1,4 +1,4 @@
-# Matteo.gm portfolio
+# GIAM portfolio
 
 Pianist & composer portfolio. Vite + React, converted from the original
 single-file `Matteo.gm Portfolio v2.dc.html` prototype.

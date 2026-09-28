@@ -51,7 +51,7 @@ Supabase → **SQL Editor** → New query → colle tout le fichier
 1. **Email Templates → Create New Template**, nommé « Réservations » :
    - *Subject* : `{{subject}}`
    - *Content* (bouton « Edit Content » → mode code) : `{{{message_html}}}`
-   - *To Email* : `{{to_email}}` · *Reply To* : `{{reply_to}}` · *From Name* : `Matteo.gm`
+   - *To Email* : `{{to_email}}` · *Reply To* : `{{reply_to}}` · *From Name* : `GIAM`
 2. **Account → Security** : active *Allow EmailJS API for non-browser applications*.
 3. Note l'ID du service, l'ID de ce template, ta *Public Key* et ta *Private Key*.
 

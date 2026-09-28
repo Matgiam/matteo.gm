@@ -14,9 +14,9 @@ const quoted = (text) => `«${nbsp}${text}${nbsp}»`;
  */
 const fr = {
   meta: {
-    title: 'Matteo.gm · Piano & composition',
+    title: 'GIAM · Piano & composition',
     description:
-      'Matteo.gm, piano et composition, à Bruxelles. Des pièces intimes et chargées d’émotion, écrites tard le soir dans le secret d’une chambre. Réservations 2026–27 ouvertes.',
+      'GIAM, piano et composition. Des pièces intimes et chargées d’émotion, écrites tard le soir dans le secret d’une chambre. Réservations 2026–27 ouvertes.',
   },
 
   language: {
@@ -47,7 +47,7 @@ const fr = {
     music: 'Musique',
     concerts: 'Concerts',
     book: 'Réserver',
-    legal: `© 2026 Matteo.gm · Illustration${nbsp}: ${quoted('Away')}, pastel sur papier`,
+    legal: `© 2026 GIAM · Illustration${nbsp}: ${quoted('Away')}, pastel sur papier`,
   },
 
   marquee: [
@@ -78,7 +78,7 @@ const fr = {
           Le piano des <Accent>heures lentes</Accent>.
         </>
       ),
-      lede: 'Je suis Matteo. J’écris au piano de brèves pièces empreintes de douceur. Elles naissent tard le soir, dans l’intimité de ma chambre à Bruxelles, pour dire ce que les mots taisent.',
+      lede: 'Je suis Matteo. J’écris au piano de brèves pièces empreintes de douceur. Elles naissent tard le soir, dans l’intimité de ma chambre, pour dire ce que les mots taisent.',
       book: 'Réserver une soirée',
       listen: `Écouter ${quoted('Away')} →`,
       artworkAlt: `${quoted('Away')}, pochette du single`,
@@ -110,11 +110,11 @@ const fr = {
         },
         {
           title: 'Salles & festivals',
-          body: 'Salles de concert, chapelles, galeries ou plein air. En solo, ou avec un violoncelle.',
+          body: 'Salles de concert, chapelles, galeries ou plein air.',
         },
         {
           title: 'Musique à l’image',
-          body: 'Une partition originale et apaisée, écrite au rythme de vos images.',
+          body: 'Une composition originale et apaisée, écrite au rythme de vos images.',
         },
       ],
       cta: 'Réserver une soirée',
@@ -134,7 +134,7 @@ const fr = {
   },
 
   about: {
-    portraitCaption: 'Chez moi, peu après le coucher du soleil',
+    // portraitCaption: 'Chez moi, peu après le coucher du soleil',
     eyebrow: 'À propos',
     title: (
       <>
@@ -142,8 +142,8 @@ const fr = {
       </>
     ),
     paragraphs: [
-      `Tout ce que j’écris commence par une émotion${nbsp}: un souvenir, un manque, une tendresse qui ne trouve pas ses mots. Tard le soir, dans ma chambre à Bruxelles, je m’installe au piano et je la laisse prendre forme.`,
-      `Je joue du piano et compose de courtes pièces, tout en retenue${nbsp}: le piano seul, parfois un violoncelle ou le souffle discret d’une bande magnétique. J’enregistre chez moi, tard, les fenêtres ouvertes, et j’aime que l’on entende la chambre respirer dans chaque prise.`,
+      `Tout ce que j’écris commence par une émotion${nbsp}: un souvenir, un manque, une tendresse qui ne trouve pas ses mots. Tard le soir, dans ma chambre, je m’installe au piano et je la laisse prendre forme.`,
+      `Je joue du piano et compose de courtes pièces, tout en retenue${nbsp}: le piano seul, ou le souffle discret d’une bande magnétique. J’enregistre chez moi, tard, les fenêtres ouvertes, et j’aime que l’on entende la chambre respirer dans chaque prise.`,
       <>
         Mon premier single, <em>{quoted('Away')}</em>, a vu le jour en 2026. Trois minutes de
         crépuscule et de nostalgie, et le premier chapitre d’un recueil encore en devenir.
@@ -153,7 +153,6 @@ const fr = {
     factsEyebrow: 'Quelques repères',
     facts: [
       'Vit à Bruxelles, en Belgique · se produit dans toute l’Europe',
-      'Piano seul, piano et violoncelle, musique à l’image',
       `Enregistre à domicile${nbsp}: une pièce, un piano, les fenêtres ouvertes`,
       `Premier single, ${quoted('Away')}, disponible sur Spotify`,
     ],
@@ -172,18 +171,19 @@ const fr = {
     body: `Une prise unique, tard le soir, dans ma chambre. La première page d’une histoire plus vaste${nbsp}: un piano feutré pour les émotions qui affleurent à la fin du jour.`,
     spotify: 'Spotify ↗',
     youtube: 'YouTube ↗',
-    upcomingTitle: 'Prochainement',
-    upcomingNote: 'deux pièces qui paraîtront bientôt',
-    upcoming: {
-      'cover-vespro': {
-        meta: 'Piano et violoncelle · automne 2026',
-        placeholder: `Déposez ici la pochette de ${quoted('Vespro')}`,
-      },
-      'cover-cartoline': {
-        meta: 'Cinq miniatures pour piano seul · hiver 2026',
-        placeholder: `Déposez ici la pochette de ${quoted('Cartoline')}`,
-      },
-    },
+    // SECRET — copie « Prochainement », masquée jusqu’à la sortie de Vespro / Cartoline.
+    // upcomingTitle: 'Prochainement',
+    // upcomingNote: 'deux pièces qui paraîtront bientôt',
+    // upcoming: {
+    //   'cover-vespro': {
+    //     meta: 'Piano et violoncelle · automne 2026',
+    //     placeholder: `Déposez ici la pochette de ${quoted('Vespro')}`,
+    //   },
+    //   'cover-cartoline': {
+    //     meta: 'Cinq miniatures pour piano seul · hiver 2026',
+    //     placeholder: `Déposez ici la pochette de ${quoted('Cartoline')}`,
+    //   },
+    // },
     cta: `Cette musique vous parle${nbsp}? Réservez une soirée`,
   },
 
@@ -202,10 +202,10 @@ const fr = {
     ),
     items: {
       away: { forces: 'piano seul', tag: 'Single' },
-      vespro: { forces: 'piano et violoncelle', tag: 'Musique de chambre' },
-      cartoline: { forces: 'cinq miniatures pour piano seul', tag: 'Cycle' },
+      // SECRET — vespro: { forces: 'piano et violoncelle', tag: 'Musique de chambre' },
+      // SECRET — cartoline: { forces: 'cinq miniatures pour piano seul', tag: 'Cycle' },
       'sea-glass': { forces: 'piano et bande magnétique', tag: 'Ambient' },
-      'sull-acqua': { forces: 'partition pour un court métrage', tag: 'Cinéma' },
+      'sull-acqua': { forces: 'composition pour un court métrage', tag: 'Cinéma' },
       'prima-luce': { forces: 'piano seul', tag: 'Solo' },
     },
     note: 'Catalogue provisoire. Remplacez-le par vos œuvres et leurs durées réelles.',
@@ -232,7 +232,9 @@ const fr = {
       'salle-des-saisons': {
         venue: 'Salle des Saisons',
         city: 'Paris, France',
-        description: `Avec violoncelle${nbsp}: création de ${quoted('Vespro')}`,
+        // SECRET — révèle le titre non sorti :
+        // description: `Avec violoncelle${nbsp}: création de ${quoted('Vespro')}`,
+        description: `Avec violoncelle${nbsp}: une pièce inédite, en création`,
       },
     },
     freeEntry: 'Entrée libre',
@@ -280,7 +282,7 @@ const fr = {
         source: 'The Quiet Review · 2026',
       },
       {
-        quote: 'Matteo.gm compose de petites pièces où l’on voudrait s’attarder.',
+        quote: 'GIAM compose de petites pièces où l’on voudrait s’attarder.',
         source: 'Neue Klaviermusik · 2026',
       },
       {

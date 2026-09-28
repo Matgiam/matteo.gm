@@ -6,9 +6,9 @@ import Accent from '../Accent';
  */
 const en = {
   meta: {
-    title: 'Matteo.gm · Pianist & Composer',
+    title: 'GIAM · Pianist & Composer',
     description:
-      'Matteo.gm, pianist and composer in Brussels. Intimate, emotional piano pieces, written late at night in a small room. Booking 2026–27 open.',
+      'GIAM, pianist and composer. Intimate, emotional piano pieces, written late at night in a small room. Booking 2026–27 open.',
   },
 
   language: {
@@ -39,7 +39,7 @@ const en = {
     music: 'Music',
     concerts: 'Concerts',
     book: 'Book me',
-    legal: '© 2026 Matteo.gm · Artwork: “Away”, pastel on paper',
+    legal: '© 2026 GIAM · Artwork: “Away”, pastel on paper',
   },
 
   marquee: [
@@ -70,7 +70,7 @@ const en = {
           Music for the <Accent>quiet hours</Accent>.
         </>
       ),
-      lede: 'I’m Matteo. I write small, warm pieces for piano, late at night in my room in Brussels, for the feelings words can’t quite hold.',
+      lede: 'I’m Matteo. I write small, warm pieces for piano, late at night in my room, for the feelings words can’t quite hold.',
       book: 'Book an evening',
       listen: 'Listen to “Away” →',
       artworkAlt: 'Away, single artwork',
@@ -102,7 +102,7 @@ const en = {
         },
         {
           title: 'Venue & festival',
-          body: 'Halls, chapels, galleries, open air. Solo or with cello.',
+          body: 'Halls, chapels, galleries, open air.',
         },
         {
           title: 'Film & commission',
@@ -126,7 +126,7 @@ const en = {
   },
 
   about: {
-    portraitCaption: 'Home, just after sunset',
+    // portraitCaption: 'Home, just after sunset',
     eyebrow: 'About',
     title: (
       <>
@@ -134,8 +134,8 @@ const en = {
       </>
     ),
     paragraphs: [
-      'Everything I write starts with a feeling: a memory, a longing, a tenderness I can’t quite say out loud. Late in the evening, in my room in Brussels, I sit down at the piano and let it find its shape.',
-      'I play piano and I compose small, calm pieces: solo piano, sometimes a cello or a soft layer of tape. I record at home, late, with the windows open, and I like when you can hear the room breathing in a take.',
+      'Everything I write starts with a feeling: a memory, a longing, a tenderness I can’t quite say out loud. Late in the evening, in my room, I sit down at the piano and let it find its shape.',
+      'I play piano and I compose small, calm pieces: solo piano,  or a soft layer of tape. I record at home, late, with the windows open, and I like when you can hear the room breathing in a take.',
       <>
         My first single, <em>“Away”</em>, came out in 2026. It’s three minutes of dusk and
         nostalgia, and the beginning of a longer collection I’m writing now.
@@ -145,7 +145,7 @@ const en = {
     factsEyebrow: 'A few facts',
     facts: [
       'Based in Brussels, Belgium · plays across Europe',
-      'Writes for solo piano, piano & cello, and film',
+      'Writes for solo piano, and film',
       'Records at home: one room, one piano, open windows',
       'Debut single “Away” out now on Spotify',
     ],
@@ -164,18 +164,19 @@ const en = {
     body: 'One take, late evening, in my room. The first page of a longer story: quiet piano for the feelings that surface at the end of the day.',
     spotify: 'Spotify ↗',
     youtube: 'YouTube ↗',
-    upcomingTitle: 'Coming next',
-    upcomingNote: 'two pieces on their way to streaming',
-    upcoming: {
-      'cover-vespro': {
-        meta: 'Piano & cello · autumn 2026',
-        placeholder: 'Drop the “Vespro” cover art',
-      },
-      'cover-cartoline': {
-        meta: 'Five miniatures for solo piano · winter 2026',
-        placeholder: 'Drop the “Cartoline” cover art',
-      },
-    },
+    // SECRET — “Coming next” copy, hidden until Vespro / Cartoline are released.
+    // upcomingTitle: 'Coming next',
+    // upcomingNote: 'two pieces on their way to streaming',
+    // upcoming: {
+    //   'cover-vespro': {
+    //     meta: 'Piano & cello · autumn 2026',
+    //     placeholder: 'Drop the “Vespro” cover art',
+    //   },
+    //   'cover-cartoline': {
+    //     meta: 'Five miniatures for solo piano · winter 2026',
+    //     placeholder: 'Drop the “Cartoline” cover art',
+    //   },
+    // },
     cta: 'Like it? Book an evening',
   },
 
@@ -195,8 +196,8 @@ const en = {
     ),
     items: {
       away: { forces: 'solo piano', tag: 'Single' },
-      vespro: { forces: 'piano & cello', tag: 'Chamber' },
-      cartoline: { forces: 'five miniatures, solo piano', tag: 'Cycle' },
+      // SECRET — vespro: { forces: 'piano & cello', tag: 'Chamber' },
+      // SECRET — cartoline: { forces: 'five miniatures, solo piano', tag: 'Cycle' },
       'sea-glass': { forces: 'piano & tape', tag: 'Ambient' },
       'sull-acqua': { forces: 'score for short film', tag: 'Film' },
       'prima-luce': { forces: 'solo piano', tag: 'Solo' },
@@ -225,7 +226,9 @@ const en = {
       'salle-des-saisons': {
         venue: 'Salle des Saisons',
         city: 'Paris, France',
-        description: 'With cello: “Vespro” premiere',
+        // SECRET — reveals the unreleased title:
+        // description: 'With cello: “Vespro” premiere',
+        description: 'With cello: a brand-new piece, first performance',
       },
     },
     freeEntry: 'Free entry',
@@ -273,7 +276,7 @@ const en = {
         source: 'The Quiet Review · 2026',
       },
       {
-        quote: 'Matteo.gm writes small rooms you want to stay in.',
+        quote: 'GIAM writes small rooms you want to stay in.',
         source: 'Neue Klaviermusik · 2026',
       },
       {
