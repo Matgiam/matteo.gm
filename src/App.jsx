@@ -14,15 +14,18 @@ import Book from './pages/Book';
 
 // Only the admin ever opens the dashboard, so visitors don't download its code.
 const Admin = lazy(() => import('./pages/Admin'));
+// Internal brand reference: same, nobody reaches /styleguide from the nav.
+const StyleGuide = lazy(() => import('./pages/StyleGuide'));
 
 export default function App() {
   const { pathname } = useLocation();
   const isAdmin = pathname.startsWith('/admin');
+  const isBare = isAdmin || pathname.startsWith('/styleguide');
 
   return (
     <>
       <ScrollToTop />
-      {!isAdmin && <Nav />}
+      {!isBare && <Nav />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -42,9 +45,17 @@ export default function App() {
             </Suspense>
           }
         />
+        <Route
+          path="/styleguide"
+          element={
+            <Suspense fallback={null}>
+              <StyleGuide />
+            </Suspense>
+          }
+        />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-      {!isAdmin && <Footer />}
+      {!isBare && <Footer />}
     </>
   );
 }
