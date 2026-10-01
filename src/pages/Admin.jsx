@@ -1,40 +1,22 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { Link, Navigate, useLocation, useSearchParams } from 'react-router-dom';
 import BookingCalendar from '../components/BookingCalendar';
 import LanguageToggle from '../components/LanguageToggle';
 import { useI18n } from '../i18n/context';
 import { bookingApi, BookingError } from '../lib/bookingApi';
 import { addDays, fromIso, monthStart, toIso, todayIso } from '../lib/dates';
 
-const RETURN_KEY = 'matteo.gm:admin-return';
 const capitalise = (text) => text.charAt(0).toUpperCase() + text.slice(1);
 const localeOf = (lang) => (lang === 'fr' ? 'fr-FR' : 'en-GB');
-
-// Remembers "?request=..." across the sign-in email, which may open in another tab.
-function rememberReturn(search) {
-  try {
-    window.localStorage.setItem(RETURN_KEY, search);
-  } catch {
-    /* storage blocked: the dashboard simply opens without the request highlighted */
-  }
-}
-
-function takeReturn() {
-  try {
-    const search = window.localStorage.getItem(RETURN_KEY) ?? '';
-    window.localStorage.removeItem(RETURN_KEY);
-    return search;
-  } catch {
-    return '';
-  }
-}
 
 export default function Admin() {
   const { t } = useI18n();
   const copy = t.admin;
   const { pathname, search } = useLocation();
-  const navigate = useNavigate();
-  const onConfirmPage = pathname.startsWith('/admin/confirm');
+  // Old sign-in emails pointed here; the dashboard is the only page now.
+  if (pathname.startsWith('/admin/confirm')) {
+    return <Navigate to={`/admin${search}`} replace />;
+  }
 
   const [session, setSession] = useState(undefined); // undefined while checking
   const [access, setAccess] = useState('unknown');
@@ -74,18 +56,13 @@ export default function Admin() {
     };
   }, [session]);
 
-  useEffect(() => {
-    if (onConfirmPage && session) navigate(`/admin${takeReturn()}`, { replace: true });
-  }, [onConfirmPage, session, navigate]);
-
   let body;
   if (!bookingApi) body = <p className="admin__loading">{copy.notConfigured}</p>;
-  else if (onConfirmPage && !session) body = <ConfirmLogin />;
-  else if (session === undefined || (session && access === 'unknown')) {
-    body = <p className="admin__loading">…</p>;
-  } else if (!session) body = <Login search={search} />;
-  else if (access === 'denied') body = <p className="admin__loading">{copy.denied}</p>;
-  else body = <Dashboard />;
+  else if (session === undefined) body = <p className="admin__loading">…</p>;
+  else if (!session) body = <Login />;
+  else if (access !== 'granted') {
+    body = <p className="admin__loading">{access === 'denied' ? copy.denied : '…'}</p>;
+  } else body = <Dashboard />;
 
   return (
     <div className="admin">
@@ -113,24 +90,25 @@ export default function Admin() {
   );
 }
 
-function Login({ search }) {
+function Login() {
   const { t } = useI18n();
   const copy = t.admin;
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [state, setState] = useState('idle');
-
-  useEffect(() => {
-    if (search.includes('request=')) rememberReturn(search);
-  }, [search]);
 
   const submit = async (e) => {
     e.preventDefault();
     setState('sending');
     try {
-      await bookingApi.sendLoginLink(email.trim(), `${window.location.origin}/admin/confirm`);
-      setState('sent');
+      await bookingApi.signIn(email.trim(), password);
+      setPassword('');
+      setState('idle');
     } catch (err) {
-      setState(err instanceof BookingError && err.code === 'rate_limited' ? 'rateLimited' : 'sent');
+      const code = err instanceof BookingError ? err.code : 'unknown';
+      if (code === 'rate_limited') setState('rateLimited');
+      else if (code === 'invalid_credentials') setState('invalid');
+      else setState('failed');
     }
   };
 
@@ -145,80 +123,41 @@ function Login({ search }) {
           <input
             type="email"
             required
-            autoComplete="email"
+            autoComplete="username"
+            autoFocus
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
+        <label className="field">
+          {copy.login.password}
+          <input
+            type="password"
+            required
+            autoComplete="current-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </label>
         <button type="submit" className="btn btn--block" disabled={state === 'sending'}>
           {state === 'sending' ? copy.login.sending : copy.login.submit}
         </button>
-        {state === 'sent' && (
-          <p className="form__status is-ok" role="status">
-            {copy.login.sent}
+        {state === 'invalid' && (
+          <p className="form__status is-error" role="alert">
+            {copy.login.invalid}
           </p>
         )}
         {state === 'rateLimited' && (
-          <p className="form__status is-error" role="status">
+          <p className="form__status is-error" role="alert">
             {copy.login.rateLimited}
           </p>
         )}
+        {state === 'failed' && (
+          <p className="form__status is-error" role="alert">
+            {copy.login.failed}
+          </p>
+        )}
       </form>
-    </section>
-  );
-}
-
-// The sign-in email links here. Signing in takes a click on purpose: mail scanners
-// that open links on their own would otherwise use up the one-time link.
-function ConfirmLogin() {
-  const { t } = useI18n();
-  const copy = t.admin;
-  const [params] = useSearchParams();
-  const tokenHash = params.get('token_hash');
-  const [state, setState] = useState(tokenHash ? 'ready' : 'waiting');
-
-  // Without token_hash (Supabase's default email), the session arrives in the URL by itself.
-  useEffect(() => {
-    if (state !== 'waiting') return undefined;
-    const timer = setTimeout(() => setState('expired'), 5000);
-    return () => clearTimeout(timer);
-  }, [state]);
-
-  const confirm = async () => {
-    setState('working');
-    try {
-      await bookingApi.confirmLogin(tokenHash, params.get('type') ?? 'email');
-    } catch {
-      setState('expired');
-    }
-  };
-
-  if (state === 'waiting') return <p className="admin__loading">{copy.confirm.working}</p>;
-
-  return (
-    <section className="admin__card">
-      <div className="eyebrow">{copy.eyebrow}</div>
-      <h1 className="display admin__title">{copy.confirm.title}</h1>
-      {state === 'expired' ? (
-        <>
-          <p className="admin__lede">{copy.confirm.expired}</p>
-          <Link to="/admin" className="btn btn--block">
-            {copy.confirm.newLink}
-          </Link>
-        </>
-      ) : (
-        <>
-          <p className="admin__lede">{copy.confirm.lede}</p>
-          <button
-            type="button"
-            className="btn btn--block"
-            onClick={confirm}
-            disabled={state === 'working'}
-          >
-            {state === 'working' ? copy.confirm.working : copy.confirm.submit}
-          </button>
-        </>
-      )}
     </section>
   );
 }

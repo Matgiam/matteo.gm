@@ -134,7 +134,6 @@ export default function Home() {
           >
             {booking.kinds.map(({ title, body }, i) => (
               <div className="card" key={i}>
-                <div className="card__num">{String(i + 1).padStart(2, '0')}</div>
                 <h3>{title}</h3>
                 <p>{body}</p>
               </div>

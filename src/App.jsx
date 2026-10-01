@@ -14,13 +14,15 @@ import Book from './pages/Book';
 
 // Only the admin ever opens the dashboard, so visitors don't download its code.
 const Admin = lazy(() => import('./pages/Admin'));
+// Where Supabase's reset email lands.
+const ResetPassword = lazy(() => import('./pages/ResetPassword'));
 // Internal brand reference: same, nobody reaches /styleguide from the nav.
 const StyleGuide = lazy(() => import('./pages/StyleGuide'));
 
 export default function App() {
   const { pathname } = useLocation();
   const isAdmin = pathname.startsWith('/admin');
-  const isBare = isAdmin || pathname.startsWith('/styleguide');
+  const isBare = isAdmin || pathname.startsWith('/reset-password') || pathname.startsWith('/styleguide');
 
   return (
     <>
@@ -42,6 +44,14 @@ export default function App() {
           element={
             <Suspense fallback={null}>
               <Admin />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/reset-password"
+          element={
+            <Suspense fallback={null}>
+              <ResetPassword />
             </Suspense>
           }
         />

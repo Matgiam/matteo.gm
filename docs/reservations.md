@@ -29,22 +29,17 @@ Supabase → **SQL Editor** → New query → colle tout le fichier
 ## 2. Ton compte admin
 
 1. **Authentication → Sign In / Providers → Email** : désactive *Allow new users to sign up*.
-2. **Authentication → Users → Add user → Create new user** : ton adresse, coche *Auto Confirm User*.
-   Prends l'adresse de ton compte Supabase : sans serveur SMTP personnalisé, Supabase n'envoie
-   les liens de connexion qu'aux membres de ton équipe.
+2. **Authentication → Users → Add user → Create new user** : ton adresse, coche *Auto Confirm User*,
+   et **définis un mot de passe**. C'est ce mot de passe que le tableau de bord demandera à
+   `/admin` ; il n'existe aucun lien de connexion par e-mail.
 3. **SQL Editor** :
    ```sql
    insert into public.admins (user_id) select id from auth.users where email = 'ton@adresse';
    ```
-4. **Authentication → URL Configuration** :
-   - *Site URL* : `https://matteo-gm.vercel.app`
-   - *Redirect URLs* : `https://matteo-gm.vercel.app/admin/confirm` et `http://localhost:5173/admin/confirm`
-5. **Authentication → Emails → Magic Link** : remplace le lien du modèle par
-   ```html
-   <a href="{{ .RedirectTo }}?token_hash={{ .TokenHash }}&type=email">Se connecter</a>
-   ```
-   Gmail et Outlook ouvrent parfois les liens tout seuls pour les analyser, ce qui « use » un
-   lien de connexion classique. Celui-ci ouvre une page avec un bouton.
+   (si la ligne existe déjà, elle est mise à jour : `on conflict (user_id) do nothing`.)
+4. `ADMIN_EMAIL`, dans `supabase/.env` (étape 4), doit être **exactement** cette adresse : c'est
+   là que partent les notifications de réservation. Si les deux diffèrent, tu ne vois jamais les
+   demandes, et le formulaire de connexion refuse l'adresse que tu tapes.
 
 ## 3. EmailJS
 
@@ -139,7 +134,9 @@ Puis redéploie : Vercel n'intègre les variables qu'au moment du build.
 | « Une erreur est survenue » après l'envoi d'une date | Un secret manque ou une valeur est fausse | Supabase → **Edge Functions → booking-request → Logs** : le message dit lequel (*Missing secret …*) |
 | « Le calendrier est momentanément inaccessible » | SQL pas appliqué, ou variables `VITE_SUPABASE_*` absentes du build | Étape 1, ou étape 6 puis redéploiement |
 | « Les clés EmailJS ne sont pas encore configurées » sur « Envoyer un message » | Une des trois variables `VITE_EMAILJS_*` manque sur Vercel | Étape 6 puis redéploiement |
-| Le mail de connexion n'arrive pas | Adresse différente de ton compte Supabase, ou limite d'envoi de Supabase atteinte | Étape 2, puis patiente quelques minutes |
+| Le tableau de bord dit « Adresse e-mail ou mot de passe incorrect » | Le compte n'a pas de mot de passe, ou l'adresse ne correspond à aucun compte | Étape 2. Impossible de distinguer les deux cas : Supabase répond la même chose |
+| Le tableau de bord dit « This account doesn't have access » | Le compte est bon mais absent de `public.admins` | L'`insert` de l'étape 2 |
+| Aucune notification, alors qu'une réservation est enregistrée | `ADMIN_EMAIL` ne correspond pas à ton compte, ou l'API EmailJS est fermée | Étapes 2 et 3 |
 
 ## Tester en local
 

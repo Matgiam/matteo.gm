@@ -17,7 +17,7 @@ const KNOWN_ERRORS = [
   'invalid_transition',
   'not_found',
   'invalid_range',
-  'link_expired',
+  'invalid_credentials',
 ];
 
 export class BookingError extends Error {
@@ -82,26 +82,36 @@ const real = {
     };
   },
 
-  async sendLoginLink(email, redirectTo) {
+  /**
+   * Signs the administrator in. A password sign-in never creates an account, so
+   * only the one created by hand in the dashboard can ever get in.
+   */
+  async signIn(email, password) {
     const supabase = await getSupabase();
-    // shouldCreateUser: false, so only the account created by hand can ever get a link.
-    const { error } = await supabase.auth.signInWithOtp({
-      email,
-      options: { shouldCreateUser: false, emailRedirectTo: redirectTo },
-    });
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
     if (error?.status === 429) fail('rate_limited');
-    // Any other error (such as an unknown address) is deliberately not revealed.
-  },
-
-  async confirmLogin(tokenHash, type) {
-    const supabase = await getSupabase();
-    const { error } = await supabase.auth.verifyOtp({ token_hash: tokenHash, type });
-    if (error) fail('link_expired');
+    // Supabase answers "Invalid login credentials" for a wrong address and for a
+    // wrong password alike, so neither is revealed here.
+    if (error) {
+      if (import.meta.env.DEV) console.warn('[auth] sign-in refused:', error.error_code, error.message);
+      fail('invalid_credentials');
+    }
   },
 
   async signOut() {
     const supabase = await getSupabase();
     await supabase.auth.signOut();
+  },
+
+  /**
+   * Sets a new password on the recovery session the reset link created. Supabase
+   * exchanges the link's tokens for a session on page load (detectSessionInUrl),
+   * so this only works while that session is still valid.
+   */
+  async updatePassword(password) {
+    const supabase = await getSupabase();
+    const { error } = await supabase.auth.updateUser({ password });
+    if (error) fail(codeFrom(error));
   },
 
   async isAdmin() {
@@ -225,9 +235,9 @@ function createMock() {
     },
     getSession: async () => ({ user: { email: 'admin@example.com' } }),
     onAuthChange: () => () => {},
-    sendLoginLink: () => wait(),
-    confirmLogin: () => wait(),
+    signIn: () => wait(),
     signOut: async () => {},
+    updatePassword: () => wait(700),
     isAdmin: async () => true,
     async fetchAdminData() {
       await wait();
