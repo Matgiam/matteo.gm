@@ -16,7 +16,7 @@ const fr = {
 meta: {
     title: 'GIAM · Artiste & compositeur',
     description:
-      'GIAM, artiste et compositeur. Des musiques apaisantes et chills, composées avec passion dans mon studio pour faire vivre des émotions uniques. Réservations 2026–27 ouvertes.',
+      'GIAM, artiste et compositeur. Des musiques apaisantes, composées avec passion dans mon studio pour faire vivre des émotions uniques. Réservations 2026–27 ouvertes.',
   },
 
   language: {
