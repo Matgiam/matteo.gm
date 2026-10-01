@@ -12,8 +12,8 @@ export default function About() {
       <figure className="sticky-col">
         <img
           data-anim="settle"
-          src="/assets/matteo-portrait.jpg"
-          alt="Matteo"
+          src="/assets/giam-portrait.jpg"
+          alt="GIAM"
           style={{
             width: '100%',
             display: 'block',

@@ -322,7 +322,7 @@ export default function StyleGuide() {
               <p className="sg__card-mark">GIAM</p>
               <div className="sg__card-bottom">
                 <p className="sg__card-role">Piano &amp; composition</p>
-                <p className="sg__card-name">Matteo</p>
+                <p className="sg__card-name">GIAM</p>
               </div>
             </div>
             <div className="sg__card sg__card--back">
@@ -333,8 +333,8 @@ export default function StyleGuide() {
           </div>
           <p className="sg__body">
             Face avant : le monogramme seul, plein cadre, beaucoup de vide. Face arrière : les
-            contacts en Newsreader, alignés à gauche. Le nom de famille n’apparaît pas : « GIAM »
-            est le nom d’artiste, « Matteo » reste secondaire.
+            contacts en Newsreader, alignés à gauche. « GIAM » est le seul nom d’artiste :
+            aucune variante du prénom n’apparaît.
           </p>
           <div className="sg__specs">
             {printSpecs.map(([label, value]) => (

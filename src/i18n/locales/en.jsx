@@ -70,7 +70,7 @@ const en = {
           Music for <Accent>feeling</Accent>.
         </>
       ),
-      lede: 'I’m Matteo. I compose calming, chill music in my studio, with passion. Every track is built to move whoever listens, to bring them a single, true emotion.',
+      lede: 'I’m GIAM. I compose calming, chill music in my studio, with passion. Every track is built to move whoever listens, to bring them a single, true emotion.',
       book: 'Book a date',
       listen: 'Listen to “Away” →',
       artworkAlt: 'Away, single artwork',
@@ -130,7 +130,7 @@ const en = {
     eyebrow: 'About',
     title: (
       <>
-        Hi, I’m <Accent>Matteo</Accent>.
+        I’m <Accent>GIAM</Accent>.
       </>
     ),
     paragraphs: [

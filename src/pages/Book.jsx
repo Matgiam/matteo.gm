@@ -194,8 +194,8 @@ export default function Book() {
   const intro = (
     <div className="sticky-col book__intro">
       <img
-        src="/assets/matteo-portrait.jpg"
-        alt="Matteo"
+        src="/assets/giam-portrait.jpg"
+        alt="GIAM"
         style={{
           width: 150,
           height: 150,

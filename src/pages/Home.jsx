@@ -63,8 +63,8 @@ export default function Home() {
           {about.eyebrow}
         </div>
         <img
-          src="/assets/matteo-portrait.jpg"
-          alt="Matteo"
+          src="/assets/giam-portrait.jpg"
+          alt="GIAM"
           style={{
             width: 'min(430px,84vw)',
             aspectRatio: '43 / 56',

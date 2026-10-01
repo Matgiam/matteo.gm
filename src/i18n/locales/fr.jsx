@@ -78,7 +78,7 @@ meta: {
           La musique des <Accent>émotions</Accent>.
         </>
       ),
-      lede: 'Je suis Matteo. Je compose des musiques apaisantes et chills, écrites avec passion dans mon studio. Chacune est pensée pour faire vivre une émotion unique, à ceux qui l’écoutent.',
+      lede: 'Je suis GIAM. Je compose des musiques apaisantes et chills, écrites avec passion dans mon studio. Chacune est pensée pour faire vivre une émotion unique, à ceux qui l’écoutent.',
       book: 'Réserver',
       listen: `Écouter ${quoted('Away')} →`,
       artworkAlt: `${quoted('Away')}, pochette du single`,
@@ -137,7 +137,7 @@ meta: {
     eyebrow: 'À propos',
     title: (
       <>
-        Je m’appelle <Accent>Matteo</Accent>.
+        Je m’appelle <Accent>GIAM</Accent>.
       </>
     ),
     paragraphs: [
