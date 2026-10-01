@@ -13,10 +13,10 @@ const quoted = (text) => `«${nbsp}${text}${nbsp}»`;
  * Switch to gendered forms here if you prefer them.
  */
 const fr = {
-  meta: {
-    title: 'GIAM · Piano & composition',
+meta: {
+    title: 'GIAM · Artiste & compositeur',
     description:
-      'GIAM, piano et composition. Des pièces intimes et chargées d’émotion, écrites tard la nuit dans le secret d’une chambre. Réservations 2026–27 ouvertes.',
+      'GIAM, artiste et compositeur. Des musiques apaisantes et chills, composées avec passion dans mon studio pour faire vivre des émotions uniques. Réservations 2026–27 ouvertes.',
   },
 
   language: {
@@ -47,7 +47,7 @@ const fr = {
     music: 'Musique',
     concerts: 'Concerts',
     book: 'Réserver',
-    legal: `© 2026 GIAM · Illustration${nbsp}: ${quoted('Away')}, pastel sur papier`,
+    legal: `© 2026 GIAM · Artiste & compositeur · Illustration${nbsp}: ${quoted('Away')}, pastel sur papier`,
   },
 
   marquee: [
@@ -72,13 +72,13 @@ const fr = {
 
   home: {
     hero: {
-      eyebrow: 'Piano & composition',
+      eyebrow: 'Artiste & compositeur',
       title: (
         <>
-          Le piano des <Accent>heures lentes</Accent>.
+          La musique des <Accent>émotions</Accent>.
         </>
       ),
-      lede: 'Je suis Matteo. J’écris au piano de brèves pièces empreintes de douceur. Elles naissent tard la nuit, dans l’intimité de ma chambre, pour dire ce que les mots taisent.',
+      lede: 'Je suis Matteo. Je compose des musiques apaisantes et chills, écrites avec passion dans mon studio. Chacune est pensée pour faire vivre une émotion unique, à ceux qui l’écoutent.',
       book: 'Réserver',
       listen: `Écouter ${quoted('Away')} →`,
       artworkAlt: `${quoted('Away')}, pochette du single`,
@@ -86,12 +86,12 @@ const fr = {
     },
     about: {
       eyebrow: 'Portrait',
-      body: 'La musique m’accompagne depuis mes plus lointains souvenirs. J’écris et j’interprète au piano, en solitaire, des pièces où l’émotion guide chaque note, pour offrir des instants d’intimité et de recueillement. Je compose également pour le jeu vidéo et pour l’image.',
+      body: 'La musique est ma passion depuis toujours. Artiste et compositeur, j’écris des morceaux apaisants où chaque note sert une émotion. Je compose pour l’image, pour le jeu vidéo, et pour tous ceux qui cherchent un moment pour eux.',
       link: 'Mon histoire →',
     },
     release: {
       eyebrow: 'Dernière parution',
-      body: 'Trois minutes de crépuscule et de douce nostalgie. Une seule prise au piano, enregistrée tard dans ma chambre, les fenêtres ouvertes sur la nuit. C’est ainsi que ma musique vous accompagne, à toute heure.',
+      body: 'Trois minutes de crépuscule et de douce nostalgie. Un morceau calme et enveloppant, composé et enregistré dans mon studio. C’est ainsi que ma musique vous accompagne, à toute heure.',
       link: 'Découvrir ma musique →',
     },
     booking: {
@@ -100,13 +100,13 @@ const fr = {
         <>
           Un lieu paisible
           <br />
-          et un piano{nbsp}?
+          et de la musique{nbsp}?
         </>
       ),
       kinds: [
         {
           title: 'Concert chez l’habitant',
-          body: 'Votre salon, vingt à quarante convives, une heure de piano à la tombée du jour, assez près pour ressentir chaque note.',
+          body: 'Votre salon, vingt à quarante convives, une heure de musique apaisante à la tombée du jour, assez près pour ressentir chaque émotion.',
         },
         {
           title: 'Salles & festivals',
@@ -124,17 +124,16 @@ const fr = {
       concert: '12 sept. 2026 · Casa della Musica, Palerme',
       concertLink: 'Toutes les dates →',
       pressEyebrow: 'Dans la presse',
-      press: quoted('De petites pièces où l’on voudrait s’attarder.'),
+      press: quoted('Des morceaux apaisants où l’on voudrait s’attarder.'),
       pressLink: 'Presse →',
       aboutEyebrow: 'À propos',
-      about:
-        'Des moments qui s’étirent, les fenêtres ouvertes, et un piano qui vit dans ma chambre.',
+      about: 'Un studio, une passion, et des musiques écrites pour faire vibrer.',
       aboutLink: 'Mon histoire →',
     },
   },
 
   about: {
-    // portraitCaption: 'Chez moi, peu après le coucher du soleil',
+    // portraitCaption: 'Au studio',
     eyebrow: 'À propos',
     title: (
       <>
@@ -142,18 +141,18 @@ const fr = {
       </>
     ),
     paragraphs: [
-      `Tout ce que j’écris commence par une émotion${nbsp}: un souvenir, un manque, une tendresse qui ne trouve pas ses mots. Tard la nuit, dans ma chambre, je m’installe au piano et je la laisse prendre forme.`,
-      `Je joue du piano et compose de courtes pièces, tout en retenue${nbsp}: le piano seul, ou le souffle discret d’une bande magnétique. J’enregistre chez moi, tard, les fenêtres ouvertes, et j’aime que l’on entende la chambre respirer dans chaque prise.`,
+      `Tout ce que j’écris commence par une émotion${nbsp}: un souvenir, un manque, une tendresse qui ne trouve pas ses mots. Dans mon studio, je cherche la couleur et la texture qui la feront ressentir à quelqu’un qui ne me connaît pas.`,
+      `Je compose des musiques apaisantes et relaxantes, qui font tomber le stress et laissent de la place${nbsp}: piano, cordes, nappes, le souffle discret d’une bande magnétique. J’aime qu’un morceau fasse du bien à celui qui l’écoute.`,
       <>
         Mon premier single, <em>{quoted('Away')}</em>, a vu le jour en 2026. Trois minutes de
         crépuscule et de nostalgie, et le premier chapitre d’un recueil encore en devenir.
       </>,
-      'Lorsque je n’enregistre pas, je joue dans des salons, des cours intérieures et de petites salles. Si vous disposez d’un lieu paisible et d’un piano, nous devrions nous entendre.',
+      'Je me produis dans des salons, des cours intérieures et de petites salles. Je compose aussi pour l’image et pour le jeu vidéo. Si vous disposez d’un lieu paisible, nous devrions nous entendre.',
     ],
     factsEyebrow: 'Quelques repères',
     facts: [
       'Vit à Bruxelles, en Belgique · se produit dans toute l’Europe',
-      `Enregistre à domicile${nbsp}: une pièce, un piano, les fenêtres ouvertes`,
+      `Artiste & compositeur${nbsp}: piano, cordes, musique à l’image`,
       `Premier single, ${quoted('Away')}, disponible sur Spotify`,
     ],
     cta: 'Réserver une date →',
@@ -168,7 +167,7 @@ const fr = {
     ),
     artworkAlt: `${quoted('Away')}, illustration de la pochette`,
     single: 'Single · 2026',
-    body: `Une prise unique, tard la nuit, dans ma chambre. La première page d’une histoire plus vaste${nbsp}: un piano feutré pour les émotions qui affleurent à la fin du jour.`,
+    body: `Un morceau apaisant et enveloppant, composé dans mon studio. La première page d’une histoire plus vaste${nbsp}: une musique qui fait du bien, pour les émotions qui affleurent à la fin du jour.`,
     spotify: 'Spotify ↗',
     youtube: 'YouTube ↗',
     // SECRET — copie « Prochainement », masquée jusqu’à la sortie de Vespro / Cartoline.
@@ -201,7 +200,7 @@ const fr = {
       </>
     ),
     items: {
-      away: { forces: 'piano seul', tag: 'Single' },
+      away: { forces: 'piano et cordes', tag: 'Single' },
       // SECRET — vespro: { forces: 'piano et violoncelle', tag: 'Musique de chambre' },
       // SECRET — cartoline: { forces: 'cinq miniatures pour piano seul', tag: 'Cycle' },
       'sea-glass': { forces: 'piano et bande magnétique', tag: 'Ambient' },
@@ -222,7 +221,7 @@ const fr = {
       'casa-della-musica': {
         venue: 'Casa della Musica',
         city: 'Palerme, Italie',
-        description: `Piano seul${nbsp}: ${quoted('Away')} et pièces inédites`,
+        description: `Piano et cordes${nbsp}: ${quoted('Away')} et morceaux inédites`,
       },
       'piano-city': {
         venue: 'Piano City, en plein air',
@@ -245,7 +244,7 @@ const fr = {
       'teatro-piccolo': { venue: 'Teatro Piccolo', city: 'Palerme, IT' },
       'living-room-roma': { venue: 'Concert chez l’habitant', city: 'Rome, IT' },
     },
-    ctaTitle: `Un lieu paisible et un piano${nbsp}?`,
+    ctaTitle: `Un lieu paisible${nbsp}?`,
     ctaBody: `J’affectionne les lieux intimes${nbsp}: salons, cours intérieures, chapelles, galeries. Les réservations pour 2026–27 sont ouvertes.`,
     cta: 'Réserver un concert →',
   },
@@ -282,7 +281,7 @@ const fr = {
         source: 'The Quiet Review · 2026',
       },
       {
-        quote: 'GIAM compose de petites pièces où l’on voudrait s’attarder.',
+        quote: 'GIAM compose des morceaux apaisants où l’on voudrait s’attarder.',
         source: 'Neue Klaviermusik · 2026',
       },
       {

@@ -6,9 +6,9 @@ import Accent from '../Accent';
  */
 const en = {
   meta: {
-    title: 'GIAM · Pianist & Composer',
+    title: 'GIAM · Artist & Composer',
     description:
-      'GIAM, pianist and composer. Intimate, emotional piano pieces, written late at night in a small room. Booking 2026–27 open.',
+      'GIAM, artist and composer. Calming, chill music composed with passion in my studio, made to move people with unique emotions. Booking 2026–27 open.',
   },
 
   language: {
@@ -39,7 +39,7 @@ const en = {
     music: 'Music',
     concerts: 'Concerts',
     book: 'Book me',
-    legal: '© 2026 GIAM · Artwork: “Away”, pastel on paper',
+    legal: '© 2026 GIAM · Artist & composer · Artwork: “Away”, pastel on paper',
   },
 
   marquee: [
@@ -64,13 +64,13 @@ const en = {
 
   home: {
     hero: {
-      eyebrow: 'Pianist & Composer',
+      eyebrow: 'Artist & Composer',
       title: (
         <>
-          Music for the <Accent>quiet hours</Accent>.
+          Music for <Accent>feeling</Accent>.
         </>
       ),
-      lede: 'I’m Matteo. I write small, warm pieces for piano, late at night in my room, for the feelings words can’t quite hold.',
+      lede: 'I’m Matteo. I compose calming, chill music in my studio, with passion. Every track is built to move whoever listens, to bring them a single, true emotion.',
       book: 'Book a date',
       listen: 'Listen to “Away” →',
       artworkAlt: 'Away, single artwork',
@@ -78,12 +78,12 @@ const en = {
     },
     about: {
       eyebrow: 'About me',
-      body: 'Passionate about music since my first memories, I write and play emotional pieces for solo piano, to create intimate, reflective moments. I also compose original music for videogames and other media.',
+      body: 'Music has been my passion for as long as I can remember. As an artist and composer, I write calming pieces where every note serves an emotion. I compose for film, for videogames, and for anyone looking for a moment of their own.',
       link: 'My story →',
     },
     release: {
       eyebrow: 'Latest release',
-      body: 'Three minutes of dusk and quiet longing. A single take at the piano, recorded late in my room, windows open. This is what my music sounds like, at any hour.',
+      body: 'Three minutes of dusk and quiet longing. A calm, enveloping piece written and recorded in my studio. This is what my music sounds like, at any hour.',
       link: 'All music →',
     },
     booking: {
@@ -92,13 +92,13 @@ const en = {
         <>
           Have a quiet space
           <br />
-          and a piano?
+          and live music?
         </>
       ),
       kinds: [
         {
           title: 'House concert',
-          body: 'Your living room, 20–40 guests, an hour of piano at dusk, close enough to feel every note.',
+          body: 'Your living room, 20–40 guests, an hour of calming music at dusk, close enough to feel every emotion.',
         },
         {
           title: 'Venue & festival',
@@ -117,16 +117,16 @@ const en = {
       concert: '12 Sept 2026 · Casa della Musica, Palermo',
       concertLink: 'All dates →',
       pressEyebrow: 'From the press',
-      press: '“Small rooms you want to stay in.”',
+      press: '“Calm pieces you want to stay in.”',
       pressLink: 'Press →',
       aboutEyebrow: 'About',
-      about: 'Open windows, and a piano that lives in my room.',
+      about: 'One studio, real passion, and music written to move people.',
       aboutLink: 'My story →',
     },
   },
 
   about: {
-    // portraitCaption: 'Home, just after sunset',
+    // portraitCaption: 'In the studio',
     eyebrow: 'About',
     title: (
       <>
@@ -134,19 +134,18 @@ const en = {
       </>
     ),
     paragraphs: [
-      'Everything I write starts with a feeling: a memory, a longing, a tenderness I can’t quite say out loud. Late at night, in my room, I sit down at the piano and let it find its shape.',
-      'I play piano and I compose small, calm pieces: solo piano,  or a soft layer of tape. I record at home, late, with the windows open, and I like when you can hear the room breathing in a take.',
+      'Everything I write starts with a feeling: a memory, a longing, a tenderness I can’t quite say out loud. In my studio, I look for the colour and texture that will make it land for someone who doesn’t know me.',
+      'I compose calming, chill music that slowly takes the stress away and leaves room to breathe: piano, strings, layered textures, the soft hiss of tape. I like a piece that does good to whoever is listening.',
       <>
         My first single, <em>“Away”</em>, came out in 2026. It’s three minutes of dusk and
         nostalgia, and the beginning of a longer collection I’m writing now.
       </>,
-      'When I’m not recording, I play living rooms, courtyards and small halls. If you have a quiet space and a piano, we’ll get along.',
+      'I play living rooms, courtyards and small halls, and I compose for film and videogames too. If you have a quiet space, we’ll get along.',
     ],
     factsEyebrow: 'A few facts',
     facts: [
       'Based in Brussels, Belgium · plays across Europe',
-      'Writes for solo piano, and film',
-      'Records at home: one room, one piano, open windows',
+      'Artist & composer: piano, strings, music for film',
       'Debut single “Away” out now on Spotify',
     ],
     cta: 'Book a date →',
@@ -161,7 +160,7 @@ const en = {
     ),
     artworkAlt: 'Away, artwork',
     single: 'Single · 2026',
-    body: 'One take, late at night, in my room. The first page of a longer story: quiet piano for the feelings that surface at the end of the day.',
+    body: 'A calm, enveloping piece written in my studio. The first page of a longer story: music that does good, for the feelings that surface at the end of the day.',
     spotify: 'Spotify ↗',
     youtube: 'YouTube ↗',
     // SECRET — “Coming next” copy, hidden until Vespro / Cartoline are released.
@@ -195,7 +194,7 @@ const en = {
       </>
     ),
     items: {
-      away: { forces: 'solo piano', tag: 'Single' },
+      away: { forces: 'piano & strings', tag: 'Single' },
       // SECRET — vespro: { forces: 'piano & cello', tag: 'Chamber' },
       // SECRET — cartoline: { forces: 'five miniatures, solo piano', tag: 'Cycle' },
       'sea-glass': { forces: 'piano & tape', tag: 'Ambient' },
@@ -216,7 +215,7 @@ const en = {
       'casa-della-musica': {
         venue: 'Casa della Musica',
         city: 'Palermo, Italy',
-        description: 'Solo piano: “Away” & new pieces',
+        description: 'Piano & strings: “Away” & new pieces',
       },
       'piano-city': {
         venue: 'Piano City, open air',
@@ -239,7 +238,7 @@ const en = {
       'teatro-piccolo': { venue: 'Teatro Piccolo', city: 'Palermo, IT' },
       'living-room-roma': { venue: 'Living-room session', city: 'Roma, IT' },
     },
-    ctaTitle: 'Have a quiet space and a piano?',
+    ctaTitle: 'Have a quiet space?',
     ctaBody:
       'I love small venues: living rooms, courtyards, chapels, galleries. Booking for 2026–27 is open.',
     cta: 'Book a concert →',
@@ -276,7 +275,7 @@ const en = {
         source: 'The Quiet Review · 2026',
       },
       {
-        quote: 'GIAM writes small rooms you want to stay in.',
+        quote: 'GIAM writes calming pieces you want to stay in.',
         source: 'Neue Klaviermusik · 2026',
       },
       {

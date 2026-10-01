@@ -6,7 +6,8 @@ const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 /**
  * Sends through EmailJS's REST API, using one generic template whose fields are
- * {{to_email}}, {{reply_to}}, {{subject}} and {{{message_html}}} (see docs/reservations.md).
+ * {{to_email}}, {{reply_to}}, {{subject}}, {{from_name}} and {{{message_html}}}
+ * (see docs/reservations.md).
  */
 async function sendEmail({ to, subject, html, replyTo }: Email): Promise<void> {
   const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
@@ -20,6 +21,8 @@ async function sendEmail({ to, subject, html, replyTo }: Email): Promise<void> {
       template_params: {
         to_email: to,
         reply_to: replyTo ?? env('ADMIN_EMAIL'),
+        // The template's From Name field must hold {{from_name}}, not a literal.
+        from_name: 'GIAM',
         subject,
         message_html: html,
       },
